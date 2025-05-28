@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from "react";
-import menuCross from './img/menu-cross.svg';
-import menuHamburger from './img/menu-hamburger.svg';
-import menuStarFull from './img/menu-star-full.svg';
 import './style.css';
 
 export const Header = () => {
@@ -22,10 +19,7 @@ export const Header = () => {
               <a className="nav__link" href="#">Domů</a>
             </li>
             <li className="nav__item">
-              <a className="nav__link nav__link--with-icon" href="#">
-                <img src={menuStarFull} alt="Hvězdička" className="nav__icon" />
-                Oblíbené otázky
-              </a>
+              <a className="nav__link" href="#">Oblíbené otázky</a>
             </li>
             <li className="nav__item">
               <a className="nav__link" href="#">O projektu</a>
@@ -36,11 +30,16 @@ export const Header = () => {
           </ul>
         </div>
 
-        <button className="nav__toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          <img
-            src={isMenuOpen ? menuCross : menuHamburger}
-            alt={isMenuOpen ? "Zavřít menu" : "Otevřít menu"}
-          />
+        <button
+          className="nav__toggle"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? "Zavřít menu" : "Otevřít menu"}
+        >
+          {isMenuOpen ? (
+            <i className="fi fi-sr-cross"></i>
+          ) : (
+            <i className="fi fi-sr-menu-burger"></i>
+          )}
         </button>
       </nav>
     </header>
