@@ -3,12 +3,13 @@
 }
 
 .nav {
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-height: 80px;
   padding: 0 20px;
-  z-index: 20;
+  position: relative;
 }
 
 .nav__title {
@@ -17,53 +18,23 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: #000;
-  z-index: 20;
 }
 
 .nav__toggle {
+  z-index: 20;
   background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 20;
 }
 
 .nav__toggle i {
   display: inline-block;
+  vertical-align: middle;
+  font-size: 2.25rem;
   width: 2.25rem;
   height: 2.25rem;
-  font-size: 2.25rem;
-  vertical-align: middle;
 }
 
-.nav__menu {
-  display: none;
-}
-
-.nav__menu.overlay {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: #457B9D;
-  text-align: center;
-  z-index: 10;
-}
-
-.nav__menu.overlay .nav__list {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-  list-style: none;
-}
-
-.nav__menu.overlay .nav__link {
-  text-decoration: none;
-  font-size: 2rem;
-  color: #000;
+body.no-scroll {
+  overflow: hidden;
 }
