@@ -15,4 +15,10 @@ html {
 
 body {
   font-family: 'Work Sans', sans-serif;
+  color: #FFF;
+  background-color: #1D3557;
+}
+
+body.no-scroll {
+  overflow: hidden;
 }
