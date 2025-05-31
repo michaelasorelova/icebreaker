@@ -22,3 +22,9 @@ body {
 body.no-scroll {
   overflow: hidden;
 }
+
+.content-wrapper {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
