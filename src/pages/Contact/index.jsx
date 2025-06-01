@@ -1,10 +1,10 @@
 import './style.css';
 
-export const SpinBottle = () => {
+export const Contact = () => {
   return (
-    <main className="spin-bottle">
+    <main className="contact">
       <div className="content-wrapper">
-        <h2>Pravda nebo úkol</h2>
+        <h2>Kontakt</h2>
       </div> 
     </main> 
   );

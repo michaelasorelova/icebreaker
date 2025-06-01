@@ -1,0 +1,43 @@
+.question-card {
+  background-color: #A8DADC;
+  border-radius: 12px;
+  padding: 32px 24px;
+  width: 280px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.question-card__text {
+  font-size: 18px;
+  color: #222;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.question-card__buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.question-card__button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 28px;
+  padding: 8px;
+  color: #222;
+  transition: transform 0.2s ease;
+}
+
+.question-card__button--cross {
+  color: #950606;
+}
+
+.question-card__button--heart {
+  color: #06402B;
+}
+
+.question-card__button--star {
+  color: #BA8E23;
+}

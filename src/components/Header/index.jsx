@@ -14,7 +14,7 @@ export const Header = () => {
   return (
     <header className="header">
       <nav className="nav">
-        <a className="nav__title" href="#">Icebreaker</a>
+        <a className="nav__title" href="/">Icebreaker</a>
 
         <SidebarMenu isMenuOpen={isMenuOpen} closeMenu={closeMenu} />
 
