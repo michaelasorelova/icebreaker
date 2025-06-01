@@ -6,47 +6,63 @@ export const HomePage = () => {
   const navigate = useNavigate();
 
   return (
-    <main className="home">
-      <div className="content-wrapper">
-        <section className="intro">
-          <p className="intro__text">
-            Ticho je fajn, ale ne na rande. <strong>Icebreaker</strong> vám pomůže prolomit ledy.
-          </p>
+    <div className="container">
+      <section className="home">
+        <p className="home__text">
+          Ticho je fajn, ale ne na rande. <strong>Icebreaker</strong> vám pomůže prolomit ledy.
+        </p>
 
-          <img
-            className="intro__image"
-            src={icebergsImg}
-            alt="Ledovce"
-          />
+        <img
+          className="home__image"
+          src={icebergsImg}
+          alt="Ledovce"
+        />
 
-          <div className="intro__options">
-            <h2 className="intro__heading">Jak chcete začít?</h2>
-            <div className="buttons">
-              <button className="button" onClick={() => navigate('/questions')}>
-                Na rozehřátí
-              </button>
-              <button className="button" onClick={() => navigate('/questions')}>
-                Zábavné
-              </button>
-              <button className="button" onClick={() => navigate('/questions')}>
-                Co by kdyby
-              </button>
-              <button className="button" onClick={() => navigate('/questions')}>
-                Na tělo
-              </button>
-              <button className="button" onClick={() => navigate('/questions')}>
-                Do hloubky
-              </button>
-              <button className="button" onClick={() => navigate('/questions')}>
-                Mix všeho
-              </button>
-              <button className="button button--full" onClick={() => navigate('/spin')}>
-                Pravda nebo úkol
-              </button>
-            </div>
+        <div className="home__options">
+          <h2 className="home__heading">Jak chcete začít?</h2>
+          <div className="home__buttons">
+            <button
+              className="home__button"
+              onClick={() => navigate('/questions', { state: { category: 'Na rozehřátí' } })}
+            >
+              Na rozehřátí
+            </button>
+            <button
+              className="home__button"
+              onClick={() => navigate('/questions', { state: { category: 'Zábavné' } })}
+            >
+              Zábavné
+            </button>
+            <button
+              className="home__button"
+              onClick={() => navigate('/questions', { state: { category: 'Co by kdyby' } })}
+            >
+              Co by kdyby
+            </button>
+            <button
+              className="home__button"
+              onClick={() => navigate('/questions', { state: { category: 'Na tělo' } })}
+            >
+              Na tělo
+            </button>
+            <button
+              className="home__button"
+              onClick={() => navigate('/questions', { state: { category: 'Do hloubky' } })}
+            >
+              Do hloubky
+            </button>
+            <button
+              className="home__button"
+              onClick={() => navigate('/questions', { state: { category: 'Mix všeho' } })}
+            >
+              Mix všeho
+            </button>
+            <button className="home__button home__button--full" onClick={() => navigate('/spin')}>
+              Pravda nebo úkol
+            </button>
           </div>
-        </section>
-      </div>
-    </main>
+        </div>
+      </section>
+    </div>
   );
 };

@@ -1,33 +1,33 @@
-.intro {
+.home {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   text-align: center;
 }
 
-.intro__text {
+.home__text {
   font-size: 1.5rem;
   line-height: 1.5;
 }
 
-.intro__image {
+.home__image {
   max-width: 240px;
   margin: 0 auto;
 }
 
-.intro__heading {
-padding-bottom: 1rem;
+.home__heading {
+  padding-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: 700;
 }
 
-.buttons {
+.home__buttons {
   display: grid;
   gap: 0.625rem;
   grid-template-columns: 1fr 1fr;
 }
 
-.button {
+.home__button {
   background-color: #E63946;
   color: #000;
   border: none;
@@ -39,6 +39,6 @@ padding-bottom: 1rem;
   transition: background-color 0.2s ease;
 }
 
-.button--full {
+.home__button--full {
   grid-column: span 2;
 }

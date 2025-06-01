@@ -2,10 +2,12 @@ import './style.css';
 
 export const Favorites = () => {
   return (
-    <main className="favorites">
-      <div className="content-wrapper">
-        <h2>Oblíbené otázky</h2>
+      <div className="container">
+        <section className="favorites">
+          <h2 className="favorites__heading">
+            Oblíbené otázky
+          </h2>
+        </section>
       </div> 
-    </main> 
   );
 };

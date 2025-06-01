@@ -18,12 +18,12 @@ import { Contact } from "./pages/Contact";
 
 const App = () => {
   return (
-    <div className="container">
+    <>
       <Header />
       <main>
         <Outlet />
       </main>
-    </div>
+    </>
   );
 };
 

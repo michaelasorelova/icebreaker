@@ -3,8 +3,10 @@ import './style.css';
 export const QuestionCard = ({ question }) => {
   return (
     <div className="question-card">
-      <div className="question-card__text">
-        {question}
+      <div className="question-card__card">
+        <p className="question-card__text">
+          {question}
+        </p>
       </div>
       <div className="question-card__buttons">
         <button className="question-card__button question-card__button--cross" aria-label="Nelíbí se mi">

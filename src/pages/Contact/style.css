@@ -1,0 +1,19 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact__heading {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.contact__text {
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.contact__link {
+  color: #A8DADC;
+}

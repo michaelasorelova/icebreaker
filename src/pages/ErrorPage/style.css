@@ -1,0 +1,15 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.error__heading {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.error__text {
+  text-align: center;
+  font-size: 1.25rem;
+}

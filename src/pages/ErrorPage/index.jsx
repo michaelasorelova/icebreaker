@@ -1,14 +1,16 @@
+import './style.css';
+
 export const ErrorPage = () => {
   return (
-    <main className="error-page">
-      <div className="content-wrapper">
-        <h2>
-            404: Stránka nenalezena.
+    <div className="container">
+      <section className="error">
+        <h2 className="error__heading">
+          Chyba 404 – stránka nenalezena
         </h2>
-        <p>
-            Stejně jako naděje, že vám Aneta ještě někdy odpoví.
+        <p className="error__text">
+          Stejně jako naděje, že vám Aneta ještě někdy odepíše.
         </p>
-      </div>
-    </main>
+      </section>
+    </div>
   );
 };
