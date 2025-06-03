@@ -22,42 +22,42 @@ export const HomePage = () => {
           <h2 className="home__heading">Jak chcete začít?</h2>
           <div className="home__buttons">
             <button
-              className="home__button"
+              className="btn"
               onClick={() => navigate('/questions', { state: { category: 'Na rozehřátí' } })}
             >
               Na rozehřátí
             </button>
             <button
-              className="home__button"
+              className="btn"
               onClick={() => navigate('/questions', { state: { category: 'Zábavné' } })}
             >
               Zábavné
             </button>
             <button
-              className="home__button"
+              className="btn"
               onClick={() => navigate('/questions', { state: { category: 'Co by kdyby' } })}
             >
               Co by kdyby
             </button>
             <button
-              className="home__button"
+              className="btn"
               onClick={() => navigate('/questions', { state: { category: 'Na tělo' } })}
             >
               Na tělo
             </button>
             <button
-              className="home__button"
+              className="btn"
               onClick={() => navigate('/questions', { state: { category: 'Do hloubky' } })}
             >
               Do hloubky
             </button>
             <button
-              className="home__button"
+              className="btn"
               onClick={() => navigate('/questions', { state: { category: 'Mix všeho' } })}
             >
               Mix všeho
             </button>
-            <button className="home__button home__button--full" onClick={() => navigate('/spin')}>
+            <button className="btn btn--full" onClick={() => navigate('/spin')}>
               Pravda nebo úkol
             </button>
           </div>

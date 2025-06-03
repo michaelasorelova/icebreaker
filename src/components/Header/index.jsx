@@ -24,9 +24,9 @@ export const Header = () => {
           aria-label={isMenuOpen ? "Zavřít menu" : "Otevřít menu"}
         >
           {isMenuOpen ? (
-            <i className="fi fi-sr-cross"></i>
+            <i className="fi fi-rr-cross-small"></i>
           ) : (
-            <i className="fi fi-sr-menu-burger"></i>
+            <i className="fi fi-rr-menu-burger"></i>
           )}
         </button>
       </nav>

@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
+@import url('https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css');
 
 html {
   box-sizing: border-box;
@@ -27,4 +29,14 @@ body.no-scroll {
   max-width: 90%;
   margin: 0 auto;
   padding: 2rem 0;
+}
+
+.btn {
+  padding: 1.25rem;
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  background-color: #E63946;
+  font-size: 1.25rem;
+  font-weight: 700;
 }

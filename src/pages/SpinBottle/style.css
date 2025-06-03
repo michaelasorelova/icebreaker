@@ -1,0 +1,21 @@
+.spin-bottle {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.spin-bottle__image {
+  max-width: 120px;
+  margin: 0 auto;
+}
+
+.spin-bottle__buttons {
+  display: grid;
+  gap: 0.625rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.spin-bottle__spin {
+  display: grid;
+  grid-template-columns: 1fr;
+}

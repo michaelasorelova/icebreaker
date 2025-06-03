@@ -1,43 +1,63 @@
+.question-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .question-card__card {
+  display: flex;
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  width: 80vw;
+  max-width: 300px;
   background-color: #A8DADC;
-  border-radius: 12px;
-  padding: 32px 24px;
-  width: 280px;
+  border-radius: 10px;
   margin: 0 auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  padding: 0 40px;
 }
 
 .question-card__text {
-  font-size: 18px;
-  color: #222;
+  font-size: 1.5rem;
+  color: #000;
   text-align: center;
-  margin-bottom: 24px;
 }
 
 .question-card__buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  gap: 1.5rem;
 }
 
 .question-card__button {
-  background: none;
+  width: 64px;
+  height: 64px;
   border: none;
-  cursor: pointer;
-  font-size: 28px;
-  padding: 8px;
-  color: #222;
-  transition: transform 0.2s ease;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.question-card__button--cross {
+.question-card__button i {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.question-card__button--dislike {
   color: #950606;
+  background-color: #FF474C;
 }
 
-.question-card__button--heart {
+.question-card__button--like {
   color: #06402B;
+  background-color: #90EE90;
 }
 
-.question-card__button--star {
+.question-card__button--save {
   color: #BA8E23;
+  background-color: #FFFFC5;
 }
