@@ -6,8 +6,12 @@
 }
 
 .home__text {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: 1.5;
+}
+
+.home__text p:first-child {
+  padding-bottom: 1rem;
 }
 
 .home__image {

@@ -8,12 +8,12 @@ import {
 import './global.css';
 
 import { Header } from './components/Header';
-import { HomePage } from './pages/HomePage';
+import { Home } from './pages/Home';
 import { About } from './pages/About';
-import { Favorites } from './pages/Favorites';
-import { QuestionPage } from './pages/QuestionPage';
+import { FavoriteQuestions } from './pages/FavoriteQuestions';
+import { QuestionCards } from './pages/QuestionCards';
 import { SpinBottle } from './pages/SpinBottle';
-import { ErrorPage } from "./pages/ErrorPage";
+import { Error } from "./pages/Error";
 import { Contact } from "./pages/Contact";
 
 const App = () => {
@@ -32,13 +32,13 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     children: [
-      { index: true, element: <HomePage /> },
-      { path: 'questions', element: <QuestionPage /> },
+      { index: true, element: <Home /> },
+      { path: 'question-cards', element: <QuestionCards /> },
       { path: 'spin', element: <SpinBottle /> },
-      { path: 'favorites', element: <Favorites /> },
+      { path: 'favorite-questions', element: <FavoriteQuestions /> },
       { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
-      { path: '*', element: <ErrorPage /> },
+      { path: '*', element: <Error /> },
     ],
   },
 ]);

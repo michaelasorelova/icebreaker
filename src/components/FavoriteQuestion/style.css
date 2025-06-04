@@ -1,0 +1,20 @@
+.favorite-question {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.favorite-question__icon i {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+  color: #BA8E23;
+}
+
+.favorite-question__text {
+  color: #FFF;
+  font-size: 1.25rem;
+}

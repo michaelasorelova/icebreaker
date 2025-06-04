@@ -1,17 +1,13 @@
-.about {
+.error {
   text-align: center;
 }
 
-.about__heading {
+.error__heading {
   padding-bottom: 1.5rem;
   font-size: 2rem;
 }
 
-.about__text {
+.error__text {
   font-size: 1.25rem;
   line-height: 1.5;
-}
-
-.about__text p:first-child {
-  padding-bottom: 1rem;
 }

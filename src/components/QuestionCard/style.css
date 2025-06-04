@@ -1,7 +1,8 @@
 .question-card {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
+  text-align: center;
 }
 
 .question-card__card {
@@ -19,7 +20,6 @@
 .question-card__text {
   font-size: 1.5rem;
   color: #000;
-  text-align: center;
 }
 
 .question-card__buttons {

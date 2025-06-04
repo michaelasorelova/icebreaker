@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SidebarMenu } from "../SidebarMenu";
+import { Sidebar } from "../Sidebar";
 import './style.css';
 
 export const Header = () => {
@@ -16,7 +16,7 @@ export const Header = () => {
       <nav className="nav">
         <a className="nav__title" href="/">Icebreaker</a>
 
-        <SidebarMenu isMenuOpen={isMenuOpen} closeMenu={closeMenu} />
+        <Sidebar isMenuOpen={isMenuOpen} closeMenu={closeMenu} />
 
         <button
           className="nav__toggle"
