@@ -1,5 +1,5 @@
 {
-  "icebreaker": [
+  "na_rozehrati": [
     "Jak rádi trávíte volný čas?",
     "Kde jste byli naposledy na dovolené?",
     "Jaký je váš oblíbený film nebo seriál?",
@@ -26,7 +26,7 @@
     "Co je pro vás nejlepší způsob, jak se odreagovat?",
     "Jaká je vaše večerní rutina?"
   ],
-  "fun": [
+  "na_pobaveni": [
     "Jaký nejzbytečnější talent máte?",
     "Patří ananas na pizzu?",
     "Jaký byl váš módní styl v dětství?",
@@ -53,7 +53,7 @@
     "Jaký je váš největší fail v kuchyni?",
     "Co jste si v dětství mysleli, ale bylo to jinak?"
   ],
-  "what-if": [
+  "co_by_kdyby": [
     "Co byste dělali, kdyby začala zombie apokalypsa?",
     "Co byste dělali, kdybyste ve Sportce vyhráli 10 milionů?",
     "Co byste dělali, kdybyste mohli být neviditelní?",
@@ -80,7 +80,7 @@
     "Jak byste reagovali, kdyby vás nová známost chtěla představit rodině už po měsíci?",
     "Kdyby vám začal hořet dům, co byste chtěli zachránit jako první?"
   ],
-  "intimate": [
+  "na_telo": [
     "Jaký název filmu vystihuje váš sexuální život?",
     "Jaký název filmu vystihuje váš vztahový život?",
     "Nachytal vás někdy někdo při masturbaci/sexu?",
@@ -107,7 +107,7 @@
     "Jaký největší trapas v posteli se vám stal?",
     "Máte rádi sexting?"
   ],
-  "deep": [
+  "do_hloubky": [
     "Jakou nejšťastnější vzpomínku z dětství si pamatujete?",
     "Jakou nejsmutnější vzpomínku z dětství si pamatujete?",
     "Chcete mít děti?",

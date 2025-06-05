@@ -2,12 +2,6 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  text-align: center;
-}
-
-.home__text {
-  font-size: 1.25rem;
-  line-height: 1.5;
 }
 
 .home__text p:first-child {
@@ -22,7 +16,6 @@
 .home__heading {
   padding-bottom: 1rem;
   font-size: 1.5rem;
-  font-weight: 700;
 }
 
 .home__buttons {

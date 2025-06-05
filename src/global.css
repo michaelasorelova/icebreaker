@@ -19,6 +19,7 @@ body {
   font-family: 'Work Sans', sans-serif;
   color: #FFF;
   background-color: #1D3557;
+  text-align: center;
 }
 
 body.no-scroll {
@@ -29,6 +30,16 @@ body.no-scroll {
   max-width: 90%;
   margin: 0 auto;
   padding: 2rem 0;
+}
+
+h2 {
+  padding-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1.25rem;
+  line-height: 1.5;
 }
 
 .btn {

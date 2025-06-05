@@ -5,7 +5,7 @@
   text-align: center;
 }
 
-.question-card__card {
+.question-card__content {
   display: flex;
   align-items: center;
   aspect-ratio: 1 / 1;
@@ -17,7 +17,7 @@
   padding: 0 40px;
 }
 
-.question-card__text {
+.question-card__content p {
   font-size: 1.5rem;
   color: #000;
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Sidebar } from "../Sidebar";
+import { MobileMenu } from "../MobileMenu";
 import './style.css';
 
 export const Header = () => {
@@ -13,13 +13,13 @@ export const Header = () => {
 
   return (
     <header className="header">
-      <nav className="nav">
-        <a className="nav__title" href="/">Icebreaker</a>
+      <nav className="main-nav">
+        <a className="main-nav__brand" href="/">Icebreaker</a>
 
-        <Sidebar isMenuOpen={isMenuOpen} closeMenu={closeMenu} />
+        <MobileMenu isOpen={isMenuOpen} onClose={closeMenu} />
 
         <button
-          className="nav__toggle"
+          className="main-nav__toggle"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label={isMenuOpen ? "Zavřít menu" : "Otevřít menu"}
         >

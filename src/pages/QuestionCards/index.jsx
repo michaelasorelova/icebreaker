@@ -1,5 +1,4 @@
 import { useLocation } from 'react-router-dom';
-import './style.css';
 import { QuestionCard } from '../../components/QuestionCard';
 
 export const QuestionCards = () => {
@@ -8,10 +7,14 @@ export const QuestionCards = () => {
 
   return (
     <div className="container">
-      <div className="question-cards">
-        <h2 className="question-cards__heading">{category}</h2>
-        <QuestionCard />
-      </div>
+      <section className="question-cards">
+
+        <div className="question-cards">
+          <h2 className="question-cards__heading">{category}</h2>
+          <QuestionCard />
+        </div>
+        
+      </section>
     </div>
   );
 };

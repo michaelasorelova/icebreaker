@@ -16,7 +16,7 @@ export const SpinBottle = () => {
           src={wineBottle}
           alt="Flaška"
         />
-
+        
         <div className="spin-bottle__spin">
           <button className="btn btn--full">Roztočte flašku</button>
         </div>

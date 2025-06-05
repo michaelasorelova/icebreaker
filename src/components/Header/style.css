@@ -2,7 +2,7 @@
   background-color: #457B9D;
 }
 
-.nav {
+.main-nav {
   z-index: 10;
   display: flex;
   align-items: center;
@@ -13,7 +13,7 @@
   margin: 0 auto;
 }
 
-.nav__title {
+.main-nav__brand {
   text-decoration: none;
   font-family: 'Manrope', sans-serif;
   font-size: 1.25rem;
@@ -21,14 +21,14 @@
   color: #000;
 }
 
-.nav__toggle {
+.main-nav__toggle {
   z-index: 20;
   background: transparent;
   border: none;
   cursor: pointer;
 }
 
-.nav__toggle i {
+.main-nav__toggle i {
   display: inline-block;
   vertical-align: middle;
   font-size: 2rem;

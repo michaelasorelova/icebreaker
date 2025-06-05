@@ -8,11 +8,11 @@ export const Home = () => {
   return (
     <div className="container">
       <section className="home">
+
         <div className="home__text">
           <p>
             Ticho je fajn, ale ne na rande. <strong>Icebreaker</strong> vám pomůže prolomit ledy – společně.    
           </p>
-
           <p>
             Čím víc otázek si navzájem zodpovíte, tím blíž si budete.
           </p>
@@ -25,7 +25,7 @@ export const Home = () => {
         />
 
         <div className="home__options">
-          <h2 className="home__heading">Jak chcete začít?</h2>
+          <h3 className="home__heading">Jak chcete začít?</h3>
           <div className="home__buttons">
             <button
               className="btn"
@@ -35,9 +35,9 @@ export const Home = () => {
             </button>
             <button
               className="btn"
-              onClick={() => navigate('/question-cards', { state: { category: 'Zábavné' } })}
+              onClick={() => navigate('/question-cards', { state: { category: 'Na pobavení' } })}
             >
-              Zábavné
+              Na pobavení
             </button>
             <button
               className="btn"
@@ -68,6 +68,7 @@ export const Home = () => {
             </button>
           </div>
         </div>
+
       </section>
     </div>
   );
