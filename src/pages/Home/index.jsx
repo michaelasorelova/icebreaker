@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import './style.css';
-import icebergsImg from "./img/icebergs.svg";
+import IceCube from "./img/ice-cube.svg";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -20,8 +20,8 @@ export const Home = () => {
 
         <img
           className="home__image"
-          src={icebergsImg}
-          alt="Ledovce"
+          src={IceCube}
+          alt="Kostka ledu"
         />
 
         <div className="home__options">
