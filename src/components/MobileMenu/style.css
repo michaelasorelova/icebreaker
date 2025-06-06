@@ -51,4 +51,5 @@
 
 .mobile-menu__backdrop--active {
   opacity: 1;
+  pointer-events: all;
 }
