@@ -11,40 +11,36 @@
   aspect-ratio: 1 / 1;
   width: 80vw;
   max-width: 300px;
-  background-color: #A8DADC;
-  border-radius: 10px;
   margin: 0 auto;
   padding: 0 40px;
+  background-color: #A8DADC;
+  border-radius: 10px;
 }
 
 .question-card__content p {
-  font-size: 1.5rem;
   color: #000;
+  font-size: 1.5rem;
 }
 
 .question-card__buttons {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   gap: 1.5rem;
 }
 
 .question-card__button {
-  width: 64px;
-  height: 64px;
-  border: none;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 64px;
+  width: 64px;
+  border: none;
+  border-radius: 50%;
 }
 
 .question-card__button i {
-  display: inline-block;
-  vertical-align: middle;
   font-size: 2.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
 }
 
 .question-card__button--dislike {

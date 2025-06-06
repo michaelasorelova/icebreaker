@@ -14,10 +14,10 @@
 }
 
 .main-nav__brand {
-  text-decoration: none;
   font-family: 'Manrope', sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
+  text-decoration: none;
   color: #000;
 }
 
@@ -25,13 +25,8 @@
   z-index: 20;
   background: transparent;
   border: none;
-  cursor: pointer;
 }
 
 .main-nav__toggle i {
-  display: inline-block;
-  vertical-align: middle;
   font-size: 2rem;
-  width: 2rem;
-  height: 2rem;
 }
