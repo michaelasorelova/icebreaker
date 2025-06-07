@@ -1,6 +1,23 @@
+import { useEffect, useState } from "react";
 import './style.css';
 
-export const QuestionCard = ({ question }) => {
+export const QuestionCard = ({ OnSelectQuestion }) => {
+  const [questions, setQuestions] = useState([]);
+
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      try {
+        const response = await fetch('/api/question_categories.json');
+        const json = await response.json();
+        setQuestions(json.data);
+      } catch (error) {
+        console.error("Chyba při načítání otázek:", error);
+      }
+    };
+
+    fetchQuestions();
+  }, []);
+
   return (
     <div className="question-card">
       <div className="question-card__content">
