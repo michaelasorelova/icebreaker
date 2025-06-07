@@ -13,3 +13,10 @@
 .favorite-question__text {
   text-align: left;
 }
+
+.icon-button {
+  background-color: transparent;
+  border: none;
+  color: rgb(216, 197, 197);
+  padding: 0.5rem;
+}

@@ -8,7 +8,13 @@ export const FavoriteQuestion = ({ favorites, removeFavorite }) => {
         {favorites.map((favorite, index) => (
           <li key={index}>
             <span>{favorite}</span>
-            <button onClick={() => removeFavorite(index)}>Remove</button>
+            <button
+              onClick={() => removeFavorite(index)}
+              className="icon-button text-red-500 hover:text-red-700 text-xl"
+              aria-label="Odebrat z oblíbených"
+            >
+              <i className="fi fi-sr-cross-circle"></i>
+            </button>
           </li>
         ))}
       </ul>
