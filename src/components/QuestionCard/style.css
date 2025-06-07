@@ -57,3 +57,11 @@
   color: #BA8E23;
   background-color: #FFFFC5;
 }
+
+.question-card__button.active i {
+  color: #4CAF50; /* zelená pro like */
+}
+
+.question-card__button--dislike.active i {
+  color: #f44336; /* červená pro dislike */
+}
