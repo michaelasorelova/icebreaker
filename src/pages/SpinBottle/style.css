@@ -7,6 +7,8 @@
 .spin-bottle__image {
   max-width: 120px;
   margin: 0 auto;
+  transition: transform 2s ease-out;
+  transform-origin: center center;
 }
 
 .spin-bottle__buttons {

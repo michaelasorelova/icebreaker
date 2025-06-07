@@ -1,6 +1,6 @@
+import './style.css';
 import { useEffect, useState } from 'react';
 import { FavoriteQuestion } from '../../components/FavoriteQuestion';
-import './style.css';
 
 export const FavoriteQuestions = () => {
   const [favorites, setFavorites] = useState([]);
