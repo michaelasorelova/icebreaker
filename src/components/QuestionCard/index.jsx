@@ -45,7 +45,7 @@ const [disliked, setDisliked] = useState(false);
    return (
     <div className="question-card">
       <div className="question-card__content">
-        <p>Jaký nejhorší dárek jste dostali?{ /* {question} */ }</p>
+        <p>{question}</p>
       </div>
       <div className="question-card__buttons">
         <button

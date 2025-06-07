@@ -21,7 +21,7 @@ export const QuestionCards = () => {
         <h2 className="question-cards__heading">
           {categoryTitles[category] || 'Otázky'}
         </h2>
-        {question ? <QuestionCard question={question} /> : <p>Načítám otázku...</p>}
+        <QuestionCard /> 
       </section>
     </div>
   );
