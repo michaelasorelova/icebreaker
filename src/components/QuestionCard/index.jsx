@@ -1,14 +1,13 @@
 import './style.css';
 import { useEffect, useState, useRef } from 'react';
 
-export const QuestionCard = ({ selectedCategory }) => {
+
+
+  export const QuestionCard = ({ selectedCategory }) => {
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const touchStartX = useRef(null);
-  const touchEndX = useRef(null);
-
-  useEffect(() => {
+    useEffect(() => {
     const fetchQuestions = async () => {
       try {
         const response = await fetch('/api/question_categories.json');
@@ -37,6 +36,10 @@ export const QuestionCard = ({ selectedCategory }) => {
 
     fetchQuestions();
   }, [selectedCategory]);
+
+  
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
 
   const next = () => {
     setCurrentIndex((prev) => (prev + 1) % questions.length);

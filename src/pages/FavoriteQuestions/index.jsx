@@ -3,18 +3,44 @@ import { FavoriteQuestion } from '../../components/FavoriteQuestion';
 import './style.css';
 
 export const FavoriteQuestions = () => {
+  const [favorites, setFavorites] = useState([]);
 
-  return (
-    <div className="container">
-      <section className="favorite-questions">
+  useEffect(() => {
+    const storedFavorites = JSON.parse(localStorage.getItem('myFavorites')) || [];
+    setFavorites(storedFavorites);
+  }, []);
 
-        <h2 className="favorite-questions__heading">Oblíbené otázky</h2>
-        
-        <div className="favorite-questions__questions">
-          <FavoriteQuestion />
-        </div>
+   useEffect(() => {
+    localStorage.setItem("myFavorites", JSON.stringify(favorites));
+  }, [favorites]);
 
-      </section>
+   
+
+   const removeFavorite = (indexToRemove) => {
+    const updatedFavorites = favorites.filter((_, index) => index !== indexToRemove);
+    setFavorites(updatedFavorites);
+  };
+
+
+
+
+   return (
+    <div className="p-4">
+      <h2 className="text-xl font-bold mb-2">Favorites List</h2>
+     
+      <ul>
+        {favorites.map((favorite, index) => (
+          <li key={index}>
+            <span>{favorite}</span>
+            <button
+              onClick={() => removeFavorite(index)}
+            >
+              Remove
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
+

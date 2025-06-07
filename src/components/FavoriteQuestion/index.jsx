@@ -7,7 +7,7 @@ export const FavoriteQuestion = ({ text }) => {
         <i className="fi fi-sr-bookmark"></i>
       </div>
       <div className="favorite-question__text">
-        <p>Jaký nejhorší dárek jste dostali?{/*{text}*/}</p>
+        <p>{text}</p>
       </div>   
     </div>
   );

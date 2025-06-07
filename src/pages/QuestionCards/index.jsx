@@ -9,6 +9,34 @@ export const QuestionCards = () => {
   const [saved, setSaved] = useState(false);
   const { category } = useParams();
 
+
+
+
+
+
+  const [favorites, setFavorites] = useState([]);
+        useEffect(() => {
+    const storedFavorites = JSON.parse(localStorage.getItem('myFavorites')) || [];
+    setFavorites(storedFavorites);
+  }, []);
+
+   useEffect(() => {
+    localStorage.setItem("myFavorites", JSON.stringify(favorites));
+  }, [favorites]);
+
+   
+
+   const removeFavorite = (indexToRemove) => {
+    const updatedFavorites = favorites.filter((_, index) => index !== indexToRemove);
+    setFavorites(updatedFavorites);
+  };
+
+  const addFavorite = () => {
+    const newItem = `Item ${items.length + 1}`;
+    setItems([...items, newItem]);
+  };
+
+
   const categoryTitles = {
     na_rozehrati: 'Na rozehřátí',
     na_pobaveni: 'Na pobavení',
@@ -50,7 +78,9 @@ export const QuestionCards = () => {
             <i className={saved ? "fi fi-sr-bookmark" : "fi fi-rr-bookmark"}></i>
           </button>
         </div>
+
       </section>
     </div>
   );
 };
+
