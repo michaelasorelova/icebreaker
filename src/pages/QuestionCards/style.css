@@ -1,0 +1,48 @@
+.question-card__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.question-card__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  width: 64px;
+  border: none;
+  border-radius: 50%;
+}
+
+.question-card__button i {
+  font-size: 2.5rem;
+}
+
+.question-card__button--dislike {
+  color: #950606;
+  background-color: #FF474C;
+}
+
+.question-card__button--like {
+  color: #06402B;
+  background-color: #90EE90;
+}
+
+.question-card__button--save {
+  color: #BA8E23;
+  background-color: #FFFFC5;
+}
+
+.question-card__button.active i {
+  color: #4CAF50; 
+}
+
+.question-card__button--dislike.active i {
+  color: #f44336; 
+}
+
+.question-card__button--save.active i {
+  color: #ffb700;
+}
