@@ -62,17 +62,15 @@ import { useEffect, useState, useRef } from 'react';
     if (!touchStartX.current || !touchEndX.current) return;
 
     const distance = touchStartX.current - touchEndX.current;
-    const threshold = 50; // minimální vzdálenost swipe v px
+    const threshold = 50;
 
     if (distance > threshold) {
-      // swipe doleva (další otázka)
+
       next();
     } else if (distance < -threshold) {
-      // swipe doprava (předchozí otázka)
       prev();
     }
 
-    // reset
     touchStartX.current = null;
     touchEndX.current = null;
   };
@@ -89,8 +87,16 @@ import { useEffect, useState, useRef } from 'react';
         <p>{currentQuestion?.text}</p>
       </div>
 
-      <div className="question-card__buttons">
-        <span>{currentIndex + 1} / {questions.length}</span>
+      <div className="question-card__progress">
+        <div className="question-card__progress-bar">
+          <div
+            className="question-card__progress-bar-fill"
+            style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
+          />
+        </div>
+        <p className="question-card__progress-percentage">
+          {Math.round(((currentIndex + 1) / questions.length) * 100)} %
+        </p>
       </div>
     </div>
   );
