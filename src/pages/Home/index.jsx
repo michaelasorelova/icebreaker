@@ -1,9 +1,13 @@
-import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './style.css';
 import IceCube from "./img/ice-cube.svg";
 
 export const Home = () => {
-  const navigate = useLocation();
+  const navigate = useNavigate();
+
+  const handleNavigate = (category) => {
+    navigate(`/question-cards/${category}`);
+  };
 
   return (
     <div className="container">
@@ -27,40 +31,22 @@ export const Home = () => {
         <div className="home__options">
           <h3 className="home__heading">Jak chcete začít?</h3>
           <div className="home__buttons">
-            <button
-              className="btn"
-              onClick={() => navigate('/question-cards', { state: { category: 'na_rozehrati' } })}
-            >
+            <button className="btn" onClick={() => handleNavigate('na_rozehrati')}>
               Na rozehřátí
             </button>
-            <button
-              className="btn"
-              onClick={() => navigate('/question-cards', { state: { category: 'na_pobaveni' } })}
-            >
+            <button className="btn" onClick={() => handleNavigate('na_pobaveni')}>
               Na pobavení
             </button>
-            <button
-              className="btn"
-              onClick={() => navigate('/question-cards', { state: { category: 'co_by_kdyby' } })}
-            >
+            <button className="btn" onClick={() => handleNavigate('co_by_kdyby')}>
               Co by kdyby
             </button>
-            <button
-              className="btn"
-              onClick={() => navigate('/question-cards', { state: { category: 'na_telo' } })}
-            >
+            <button className="btn" onClick={() => handleNavigate('na_telo')}>
               Na tělo
             </button>
-            <button
-              className="btn"
-              onClick={() => navigate('/question-cards', { state: { category: 'do_hloubky' } })}
-            >
+            <button className="btn" onClick={() => handleNavigate('do_hloubky')}>
               Do hloubky
             </button>
-            <button
-              className="btn"
-              onClick={() => navigate('/question-cards', { state: { category: 'mix_vseho' } })}
-            >
+            <button className="btn" onClick={() => handleNavigate('mix_vseho')}>
               Mix všeho
             </button>
             <button className="btn btn--full" onClick={() => navigate('/spin')}>

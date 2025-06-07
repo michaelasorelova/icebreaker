@@ -33,7 +33,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <Home /> },
-      { path: 'question-cards', element: <QuestionCards /> },
+      { path: 'question-cards/:category', element: <QuestionCards /> },
       { path: 'spin', element: <SpinBottle /> },
       { path: 'favorite-questions', element: <FavoriteQuestions /> },
       { path: 'about', element: <About /> },

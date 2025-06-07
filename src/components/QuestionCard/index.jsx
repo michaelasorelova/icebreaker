@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
 import './style.css';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 export const QuestionCard = ({ OnSelectQuestion }) => {
   const [question, setQuestion] = useState(null); 
@@ -41,12 +40,12 @@ const [disliked, setDisliked] = useState(false);
     fetchQuestions();
   }, []);
 
-  if (!question) return <p>Načítání otázky…</p>;
+  // if (!question) return <p>Načítání otázky…</p>;
 
    return (
     <div className="question-card">
       <div className="question-card__content">
-        <p>{question.text}</p>
+        <p>Jaký nejhorší dárek jste dostali?{ /* {question} */ }</p>
       </div>
       <div className="question-card__buttons">
         <button

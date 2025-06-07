@@ -1,19 +1,27 @@
-import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { QuestionCard } from '../../components/QuestionCard';
 
 export const QuestionCards = () => {
-  const location = useLocation();
-  const category = location.state?.category || 'Otázky';
+  const { category } = useParams();
+  const [question, setQuestion] = useState(null);
+
+  const categoryTitles = {
+    na_rozehrati: 'Na rozehřátí',
+    na_pobaveni: 'Na pobavení',
+    co_by_kdyby: 'Co by kdyby',
+    na_telo: 'Na tělo',
+    do_hloubky: 'Do hloubky',
+    mix_vseho: 'Mix všeho',
+  };
 
   return (
     <div className="container">
       <section className="question-cards">
-
-        <div className="question-cards">
-          <h2 className="question-cards__heading">{category}</h2>
-          <QuestionCard />
-        </div>
-        
+        <h2 className="question-cards__heading">
+          {categoryTitles[category] || 'Otázky'}
+        </h2>
+        {question ? <QuestionCard question={question} /> : <p>Načítám otázku...</p>}
       </section>
     </div>
   );
