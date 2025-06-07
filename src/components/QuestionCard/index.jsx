@@ -1,43 +1,7 @@
 import './style.css';
-import { useEffect, useState, useRef } from 'react';
+import { useRef } from 'react';
 
-
-
-  export const QuestionCard = ({ selectedCategory }) => {
-  const [questions, setQuestions] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-    useEffect(() => {
-    const fetchQuestions = async () => {
-      try {
-        const response = await fetch('/api/question_categories.json');
-        const json = await response.json();
-
-        let allQuestions = [];
-
-        if (selectedCategory === 'mix_vseho') {
-          allQuestions = Object.values(json).flat();
-        } else {
-          allQuestions = json[selectedCategory] || [];
-        }
-
-        if (allQuestions.length > 0) {
-          const shuffled = allQuestions.sort(() => 0.5 - Math.random());
-          const selected = shuffled.slice(0, 25);
-          setQuestions(selected);
-        } else {
-          setQuestions([{ text: 'V této kategorii nejsou žádné otázky.' }]);
-        }
-      } catch (error) {
-        console.error("Chyba při načítání otázek:", error);
-        setQuestions([{ text: 'Nepodařilo se načíst otázky.' }]);
-      }
-    };
-
-    fetchQuestions();
-  }, [selectedCategory]);
-
-  
+export const QuestionCard = ({ questions, currentIndex, setCurrentIndex }) => {
   const touchStartX = useRef(null);
   const touchEndX = useRef(null);
 
@@ -65,7 +29,6 @@ import { useEffect, useState, useRef } from 'react';
     const threshold = 50;
 
     if (distance > threshold) {
-
       next();
     } else if (distance < -threshold) {
       prev();
@@ -87,16 +50,8 @@ import { useEffect, useState, useRef } from 'react';
         <p>{currentQuestion?.text}</p>
       </div>
 
-      <div className="question-card__progress">
-        <div className="question-card__progress-bar">
-          <div
-            className="question-card__progress-bar-fill"
-            style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
-          />
-        </div>
-        <p className="question-card__progress-percentage">
-          {Math.round(((currentIndex + 1) / questions.length) * 100)} %
-        </p>
+      <div className="question-card__buttons">
+        <span>{currentIndex + 1} / {questions.length}</span>
       </div>
     </div>
   );

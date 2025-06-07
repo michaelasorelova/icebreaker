@@ -9,33 +9,49 @@ export const QuestionCards = () => {
   const [saved, setSaved] = useState(false);
   const { category } = useParams();
 
-
-
-
-
+  const [questions, setQuestions] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const [favorites, setFavorites] = useState([]);
-        useEffect(() => {
+
+  useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem('myFavorites')) || [];
     setFavorites(storedFavorites);
   }, []);
 
-   useEffect(() => {
+  useEffect(() => {
     localStorage.setItem("myFavorites", JSON.stringify(favorites));
   }, [favorites]);
 
-   
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      try {
+        const response = await fetch('/api/question_categories.json');
+        const json = await response.json();
 
-   const removeFavorite = (indexToRemove) => {
-    const updatedFavorites = favorites.filter((_, index) => index !== indexToRemove);
-    setFavorites(updatedFavorites);
-  };
+        let allQuestions = [];
 
-  const addFavorite = () => {
-    const newItem = `Item ${items.length + 1}`;
-    setItems([...items, newItem]);
-  };
+        if (category === 'mix_vseho') {
+          allQuestions = Object.values(json).flat();
+        } else {
+          allQuestions = json[category] || [];
+        }
 
+        if (allQuestions.length > 0) {
+          const shuffled = allQuestions.sort(() => 0.5 - Math.random());
+          const selected = shuffled.slice(0, 25);
+          setQuestions(selected);
+        } else {
+          setQuestions([{ text: 'V této kategorii nejsou žádné otázky.' }]);
+        }
+      } catch (error) {
+        console.error("Chyba při načítání otázek:", error);
+        setQuestions([{ text: 'Nepodařilo se načíst otázky.' }]);
+      }
+    };
+
+    fetchQuestions();
+  }, [category]);
 
   const categoryTitles = {
     na_rozehrati: 'Na rozehřátí',
@@ -52,7 +68,13 @@ export const QuestionCards = () => {
         <h2 className="question-cards__heading">
           {categoryTitles[category] || 'Otázky'}
         </h2>
-        <QuestionCard selectedCategory={category} />
+
+        <QuestionCard
+          questions={questions}
+          currentIndex={currentIndex}
+          setCurrentIndex={setCurrentIndex}
+        />
+
         <div className="question-card__buttons">
           <button
             className="question-card__button question-card__button--dislike"
@@ -78,9 +100,7 @@ export const QuestionCards = () => {
             <i className={saved ? "fi fi-sr-bookmark" : "fi fi-rr-bookmark"}></i>
           </button>
         </div>
-
       </section>
     </div>
   );
 };
-
