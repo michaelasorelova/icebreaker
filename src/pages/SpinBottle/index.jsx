@@ -6,10 +6,8 @@ export const SpinBottle = () => {
   const [rotation, setRotation] = useState(0);
 
   const handleSpin = () => {
-    // Vyber 0 nebo 180 stupňů náhodně
     const targetAngle = Math.random() < 0.5 ? 0 : 180;
 
-    // Přidej několik úplných otáček (např. 5 × 360 = 1800)
     const spinAmount = 5 * 360 + targetAngle;
 
     setRotation((prev) => prev + spinAmount);

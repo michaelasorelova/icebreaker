@@ -26,7 +26,7 @@ export const FavoriteQuestions = () => {
 
    return (
     <div className="p-4">
-      <h2 className="text-xl font-bold mb-2">Favorites List</h2>
+      <h2 className="text-xl font-bold mb-2">Oblíbené otázky</h2>
      
       <ul>
         {favorites.map((favorite, index) => (

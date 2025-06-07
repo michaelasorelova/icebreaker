@@ -8,20 +8,8 @@ export const QuestionCards = () => {
   const [disliked, setDisliked] = useState(false);
   const [saved, setSaved] = useState(false);
   const { category } = useParams();
-
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const [favorites, setFavorites] = useState([]);
-
-  useEffect(() => {
-    const storedFavorites = JSON.parse(localStorage.getItem('myFavorites')) || [];
-    setFavorites(storedFavorites);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("myFavorites", JSON.stringify(favorites));
-  }, [favorites]);
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -52,6 +40,25 @@ export const QuestionCards = () => {
 
     fetchQuestions();
   }, [category]);
+const handleSaveFavorite = () => {
+  const currentQuestion = questions[currentIndex]?.text;
+  if (!currentQuestion) return;
+
+  const existingFavorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
+
+  const isAlreadySaved = existingFavorites.includes(currentQuestion);
+  let updatedFavorites;
+
+  if (isAlreadySaved) {
+    updatedFavorites = existingFavorites.filter(q => q !== currentQuestion);
+    setSaved(false);
+  } else {
+    updatedFavorites = [...existingFavorites, currentQuestion];
+    setSaved(true);
+  }
+
+  localStorage.setItem("myFavorites", JSON.stringify(updatedFavorites));
+};
 
   const categoryTitles = {
     na_rozehrati: 'Na rozehřátí',
@@ -81,7 +88,7 @@ export const QuestionCards = () => {
             aria-label="To se mi nelíbí"
             onClick={() => setDisliked(!disliked)}
           >
-            <i className={disliked ? "fi fi-sr-thumbs-down" : "ffi fi-rr-hand"}></i>
+            <i className={disliked ? "fi fi-sr-thumbs-down" : "fi fi-rr-hand"}></i>
           </button>
 
           <button
@@ -95,7 +102,7 @@ export const QuestionCards = () => {
           <button
             className="question-card__button question-card__button--save"
             aria-label="Přidat k oblíbeným"
-            onClick={() => setSaved(!saved)}
+            onClick={handleSaveFavorite}
           >
             <i className={saved ? "fi fi-sr-bookmark" : "fi fi-rr-bookmark"}></i>
           </button>
