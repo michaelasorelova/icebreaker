@@ -1,48 +1,42 @@
 import './style.css';
 import { useEffect, useState } from 'react';
 
-export const QuestionCard = ({ OnSelectQuestion }) => {
+export const QuestionCard = ({ selectedCategory }) => {
   const [question, setQuestion] = useState(null); 
-  const [selectedCategory, setSelectedCategory] = useState('na_rozehrati'); 
-
-
   const [liked, setLiked] = useState(false);
-const [disliked, setDisliked] = useState(false);
-
+  const [disliked, setDisliked] = useState(false);
 
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
         const response = await fetch('/api/question_categories.json');
         const json = await response.json();
-        
-        // const category = json[];
-        // const categoryQuestions = json.data[selectedCategory]; 
 
+        let questions = [];
 
+        if (selectedCategory === 'mix_vseho') {
+          const allQuestions = Object.values(json).flat();
+          questions = allQuestions;
+        } else {
+          questions = json[selectedCategory] || [];
+        }
 
-        // const questions = ;
-        // questions.sort();
-        // questions.reverse();
-        // console.log(questions); 
-
-        
-
-        // const randomQuestion = category[Math.floor(Math.random() * category.length)];
-
-        // setQuestion(randomQuestion);
+        if (questions.length > 0) {
+          const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+          setQuestion(randomQuestion.text);
+        } else {
+          setQuestion("V této kategorii nejsou žádné otázky.");
+        }
       } catch (error) {
         console.error("Chyba při načítání otázek:", error);
+        setQuestion("Nepodařilo se načíst otázku.");
       }
     };
 
-
     fetchQuestions();
-  }, []);
+  }, [selectedCategory]);
 
-  // if (!question) return <p>Načítání otázky…</p>;
-
-   return (
+  return (
     <div className="question-card">
       <div className="question-card__content">
         <p>{question}</p>

@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { QuestionCard } from '../../components/QuestionCard';
 
 export const QuestionCards = () => {
   const { category } = useParams();
-  const [question, setQuestion] = useState(null);
 
   const categoryTitles = {
     na_rozehrati: 'Na rozehřátí',
@@ -21,7 +19,7 @@ export const QuestionCards = () => {
         <h2 className="question-cards__heading">
           {categoryTitles[category] || 'Otázky'}
         </h2>
-        <QuestionCard /> 
+        <QuestionCard selectedCategory={category} />
       </section>
     </div>
   );
