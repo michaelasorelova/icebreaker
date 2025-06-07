@@ -10,37 +10,23 @@ export const FavoriteQuestions = () => {
     setFavorites(storedFavorites);
   }, []);
 
-   useEffect(() => {
+  useEffect(() => {
     localStorage.setItem("myFavorites", JSON.stringify(favorites));
   }, [favorites]);
 
-   
-
-   const removeFavorite = (indexToRemove) => {
+  const removeFavorite = (indexToRemove) => {
     const updatedFavorites = favorites.filter((_, index) => index !== indexToRemove);
     setFavorites(updatedFavorites);
   };
 
-
-
-
-   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-2">Oblíbené otázky</h2>
-     
-      <ul>
-        {favorites.map((favorite, index) => (
-          <li key={index}>
-            <span>{favorite}</span>
-            <button
-              onClick={() => removeFavorite(index)}
-            >
-              Remove
-            </button>
-          </li>
-        ))}
-      </ul>
+  return (
+    <div className="container">
+      <section className="favorite-questions">
+        <h2 className="favorite-questions__heading">Oblíbené otázky</h2>
+        <div className="favorite-questions__questions">
+          <FavoriteQuestion favorites={favorites} removeFavorite={removeFavorite} />
+        </div>
+      </section>
     </div>
   );
 };
-
