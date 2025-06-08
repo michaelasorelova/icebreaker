@@ -5,11 +5,6 @@ import './style.css';
 import React from "react";
 import Slider from "react-slick";
 
-
-
-
-
-
 export const QuestionCards = () => {
   const [liked, setLiked] = useState(false);
   const [disliked, setDisliked] = useState(false);
@@ -47,25 +42,26 @@ export const QuestionCards = () => {
 
     fetchQuestions();
   }, [category]);
+
   const handleSaveFavorite = () => {
-  const currentQuestion = questions[currentIndex]?.text;
-  if (!currentQuestion) return;
+    const currentQuestion = questions[currentIndex]?.text;
+    if (!currentQuestion) return;
 
-  const existingFavorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
+    const existingFavorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
 
-  const isAlreadySaved = existingFavorites.includes(currentQuestion);
-  let updatedFavorites;
+    const isAlreadySaved = existingFavorites.includes(currentQuestion);
+    let updatedFavorites;
 
-  if (isAlreadySaved) {
-    updatedFavorites = existingFavorites.filter(q => q !== currentQuestion);
-    setSaved(false);
-  } else {
-    updatedFavorites = [...existingFavorites, currentQuestion];
-    setSaved(true);
-  }
+    if (isAlreadySaved) {
+      updatedFavorites = existingFavorites.filter(q => q !== currentQuestion);
+      setSaved(false);
+    } else {
+      updatedFavorites = [...existingFavorites, currentQuestion];
+      setSaved(true);
+    }
 
-  localStorage.setItem("myFavorites", JSON.stringify(updatedFavorites));
-};
+    localStorage.setItem("myFavorites", JSON.stringify(updatedFavorites));
+  };
 
   const categoryTitles = {
     na_rozehrati: 'Na rozehřátí',
@@ -76,6 +72,9 @@ export const QuestionCards = () => {
     mix_vseho: 'Mix všeho',
   };
 
+  //progress bar
+  const progressPercent = questions.length > 0 ? ((currentIndex + 1) / questions.length) * 100 : 0;
+
   return (
     <div className="container">
       <section className="question-cards">
@@ -83,19 +82,20 @@ export const QuestionCards = () => {
           {categoryTitles[category] || 'Otázky'}
         </h2>
 
-        {/* <QuestionCard
-          questions={questions}
-          currentIndex={currentIndex}
-          setCurrentIndex={setCurrentIndex}
-        /> */}
 
-   <div className="question-cards__track">
-  <CenterMode questions={questions} />
-</div>
+       
+        <div className="question-cards__track">
+          <CenterMode questions={questions} onSlideChange={setCurrentIndex} />
+        </div>
 
-
-
-
+ <div className="custom-progress-bar">
+          <div
+            className="custom-progress-bar__fill"
+            style={{ width: `${progressPercent}%` }}
+          />
+        </div>
+        <p className="progress-text">{currentIndex + 1} / {questions.length}</p>
+        
         <div className="question-card__buttons">
           <button
             className="question-card__button question-card__button--dislike"
@@ -126,29 +126,29 @@ export const QuestionCards = () => {
   );
 };
 
-
-
-function CenterMode({ questions }) {
+function CenterMode({ questions, onSlideChange }) {
   const settings = {
     className: "center",
     centerMode: true,
-    infinite: false,
-    centerPadding: "60px",  
-    slidesToShow: 1,        
+    infinite: true,
+    centerPadding: "60px",
+    slidesToShow: 3,
     swipeToSlide: true,
     speed: 500,
+    beforeChange: (oldIndex, newIndex) => {
+      if (onSlideChange) {
+        onSlideChange(newIndex);
+      }
+    },
   };
 
   return (
     <div className="slider-container">
       <Slider {...settings}>
         {questions.map((question, index) => (
-          <div key={index}>
-            <QuestionCard question={question.text} />
-          </div>
+          <QuestionCard key={index} question={question.text} />
         ))}
       </Slider>
     </div>
   );
 }
-
