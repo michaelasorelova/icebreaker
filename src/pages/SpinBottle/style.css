@@ -21,3 +21,12 @@
   display: grid;
   grid-template-columns: 1fr;
 }
+
+.spin-bottle__dare {
+  padding: 1rem;
+  background-color: rgb(177, 206, 220);
+  border: 2px dashed rgb(243, 240, 240);
+  margin-top: 20px;
+  font-weight: bold;
+  color: rgb(221, 45, 45);
+}

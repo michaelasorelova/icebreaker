@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import './style.css';
 import IceCube from "./img/ice-cube.svg";
 
+
 export const Home = () => {
   const navigate = useNavigate();
 
