@@ -37,6 +37,7 @@ export const SpinBottle = () => {
     };
     loadTruths();
   }, []);
+  
 
   // Roztočení flašky
   const handleSpin = () => {
