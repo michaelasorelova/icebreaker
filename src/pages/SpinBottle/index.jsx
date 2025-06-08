@@ -14,7 +14,6 @@ export const SpinBottle = () => {
     try {
       const res = await fetch('/api/dares.json');
       const data = await res.json();
-      console.log("Načtené úkoly:", data); // Přidej toto
       setDares(data);
     } catch (err) {
       console.error("Chyba při načítání úkolů:", err);
@@ -46,7 +45,6 @@ export const SpinBottle = () => {
     setRotation((prev) => prev + spinAmount);
   };
 
-  // Klik na Úkol
  const handleDareClick = () => {
   if (!dares.length) {
     return setCurrentText({ type: 'Úkol', text: 'Úkoly nebyly načteny.' });
