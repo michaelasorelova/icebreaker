@@ -82,8 +82,6 @@ export const QuestionCards = () => {
           {categoryTitles[category] || 'Otázky'}
         </h2>
 
-
-       
         <div className="question-cards__track">
           <CenterMode questions={questions} onSlideChange={setCurrentIndex} />
         </div>
@@ -128,19 +126,20 @@ export const QuestionCards = () => {
 
 function CenterMode({ questions, onSlideChange }) {
   const settings = {
-    className: "center",
+    arrows: false,
     centerMode: true,
-    infinite: true,
-    centerPadding: "60px",
-    slidesToShow: 3,
+    infinite: false,
+    centerPadding: "20px",
+    slidesToShow: 1,
     swipeToSlide: true,
     speed: 500,
-    beforeChange: (oldIndex, newIndex) => {
+     beforeChange: (oldIndex, newIndex) => {
       if (onSlideChange) {
         onSlideChange(newIndex);
       }
     },
   };
+  
 
   return (
     <div className="slider-container">
