@@ -8,7 +8,7 @@ import Slider from "react-slick";
 export const QuestionCards = () => {
   const [liked, setLiked] = useState(false);
   const [disliked, setDisliked] = useState(false);
-  const [saved, setSaved] = useState(false);
+  const [savedQuestions, setSavedQuestions] = useState(new Set());
   const { category } = useParams();
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -43,21 +43,30 @@ export const QuestionCards = () => {
     fetchQuestions();
   }, [category]);
 
+ 
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
+    setSavedQuestions(new Set(favorites));
+  }, []);
+
   const handleSaveFavorite = () => {
     const currentQuestion = questions[currentIndex]?.text;
     if (!currentQuestion) return;
 
     const existingFavorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
-
     const isAlreadySaved = existingFavorites.includes(currentQuestion);
     let updatedFavorites;
 
     if (isAlreadySaved) {
       updatedFavorites = existingFavorites.filter(q => q !== currentQuestion);
-      setSaved(false);
+      setSavedQuestions(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(currentQuestion);
+        return newSet;
+      });
     } else {
       updatedFavorites = [...existingFavorites, currentQuestion];
-      setSaved(true);
+      setSavedQuestions(prev => new Set(prev).add(currentQuestion));
     }
 
     localStorage.setItem("myFavorites", JSON.stringify(updatedFavorites));
@@ -72,7 +81,6 @@ export const QuestionCards = () => {
     mix_vseho: 'Mix všeho',
   };
 
-  //progress bar
   const progressPercent = questions.length > 0 ? ((currentIndex + 1) / questions.length) * 100 : 0;
 
   return (
@@ -86,15 +94,16 @@ export const QuestionCards = () => {
           <CenterMode questions={questions} onSlideChange={setCurrentIndex} />
         </div>
 
- <div className="custom-progress-bar">
+        <div className="custom-progress-bar">
           <div
             className="custom-progress-bar__fill"
             style={{ width: `${progressPercent}%` }}
           />
         </div>
         <p className="progress-text">{currentIndex + 1} / {questions.length}</p>
-        
+
         <div className="question-card__buttons">
+          {/* Dislike */}
           <button
             className="question-card__button question-card__button--dislike"
             aria-label="To se mi nelíbí"
@@ -103,6 +112,7 @@ export const QuestionCards = () => {
             <i className={disliked ? "fi fi-sr-thumbs-down" : "fi fi-rr-hand"}></i>
           </button>
 
+          {/* Like */}
           <button
             className="question-card__button question-card__button--like"
             aria-label="To se mi líbí"
@@ -111,12 +121,14 @@ export const QuestionCards = () => {
             <i className={liked ? "fi fi-sr-thumbs-up" : "fi fi-rr-social-network"}></i>
           </button>
 
+          {/* Save */}
           <button
             className="question-card__button question-card__button--save"
             aria-label="Přidat k oblíbeným"
             onClick={handleSaveFavorite}
           >
-            <i className={saved ? "fi fi-sr-bookmark" : "fi fi-rr-bookmark"}></i>
+            <i className={savedQuestions.has(questions[currentIndex]?.text)
+              ? "fi fi-sr-bookmark" : "fi fi-rr-bookmark"}></i>
           </button>
         </div>
       </section>
@@ -133,13 +145,12 @@ function CenterMode({ questions, onSlideChange }) {
     slidesToShow: 1,
     swipeToSlide: true,
     speed: 500,
-     beforeChange: (oldIndex, newIndex) => {
+    beforeChange: (oldIndex, newIndex) => {
       if (onSlideChange) {
         onSlideChange(newIndex);
       }
     },
   };
-  
 
   return (
     <div className="slider-container">
