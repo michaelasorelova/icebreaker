@@ -7,24 +7,23 @@ export const SpinBottle = () => {
   const [dares, setDares] = useState([]);
   const [truths, setTruths] = useState([]);
   const [currentText, setCurrentText] = useState(null);
+  const [showOverlay, setShowOverlay] = useState(false);
+  const [hasSpun, setHasSpun] = useState(false);
+  const [hasChosen, setHasChosen] = useState(false);
 
-  // Načítání úkolů
   useEffect(() => {
-  const loadDares = async () => {
-    try {
-      const res = await fetch('/api/dares.json');
-      const data = await res.json();
-      setDares(data);
-    } catch (err) {
-      console.error("Chyba při načítání úkolů:", err);
-    }
-  };
+    const loadDares = async () => {
+      try {
+        const res = await fetch('/api/dares.json');
+        const data = await res.json();
+        setDares(data);
+      } catch (err) {
+        console.error("Chyba při načítání úkolů:", err);
+      }
+    };
+    loadDares();
+  }, []);
 
-  loadDares();
-}, []);
-
-
-  // Načítání pravd
   useEffect(() => {
     const loadTruths = async () => {
       try {
@@ -38,40 +37,61 @@ export const SpinBottle = () => {
     loadTruths();
   }, []);
 
-  // Roztočení flašky
   const handleSpin = () => {
     const targetAngle = Math.random() < 0.5 ? 0 : 180;
     const spinAmount = 5 * 360 + targetAngle;
     setRotation((prev) => prev + spinAmount);
+    setHasSpun(true);
+    setHasChosen(false);
   };
 
- const handleDareClick = () => {
-  if (!dares.length) {
-    return setCurrentText({ type: 'Úkol', text: 'Úkoly nebyly načteny.' });
-  }
-
-  const randomIndex = Math.floor(Math.random() * dares.length);
-  const selectedDare = dares[randomIndex];
-  setCurrentText({ type: 'Úkol', text: selectedDare });
-};
-
-
- 
-  const handleTruthClick = () => {
-    if (truths.length === 0) {
-      setCurrentText({ type: 'Pravda', text: 'Otázky pravdy nebyly načteny.' });
-      return;
+  const handleDareClick = () => {
+    if (!dares.length) {
+      setCurrentText({ type: 'Úkol', text: 'Úkoly nebyly načteny.' });
+    } else {
+      const randomIndex = Math.floor(Math.random() * dares.length);
+      const selectedDare = dares[randomIndex];
+      setCurrentText({ type: 'Úkol', text: selectedDare });
     }
-    const random = truths[Math.floor(Math.random() * truths.length)];
-    setCurrentText({ type: 'Pravda', text: random });
+    setShowOverlay(true);
+    setHasChosen(true);
+  };
+
+  const handleTruthClick = () => {
+    if (!truths.length) {
+      setCurrentText({ type: 'Pravda', text: 'Otázky pravdy nebyly načteny.' });
+    } else {
+      const random = truths[Math.floor(Math.random() * truths.length)];
+      setCurrentText({ type: 'Pravda', text: random });
+    }
+    setShowOverlay(true);
+    setHasChosen(true);
+  };
+
+  const handleOverlayClose = () => {
+    setShowOverlay(false);
+    setHasSpun(false);
+    setHasChosen(false);
   };
 
   return (
     <div className="container">
       <section className="spin-bottle">
         <div className="spin-bottle__buttons">
-          <button className="btn" onClick={handleTruthClick}>Pravda</button>
-          <button className="btn" onClick={handleDareClick}>Úkol</button>
+          <button
+            className={`btn ${(!hasSpun || hasChosen) ? 'disabled' : ''}`}
+            onClick={handleTruthClick}
+            disabled={!hasSpun || hasChosen}
+          >
+            Pravda
+          </button>
+            <button
+              className={`btn ${(!hasSpun || hasChosen) ? 'disabled' : ''}`}
+              onClick={handleDareClick}
+              disabled={!hasSpun || hasChosen}
+            >
+            Úkol
+          </button>
         </div>
 
         <img
@@ -79,21 +99,28 @@ export const SpinBottle = () => {
           src={wineBottle}
           alt="Flaška"
           style={{ transform: `rotate(${rotation}deg)` }}
+          onClick={!hasSpun ? handleSpin : undefined}
         />
 
-        <div className="spin-bottle__spin">
-          <button className="btn btn--full" onClick={handleSpin}>
+        <div className="spin-bottle__button">
+          <button
+            className={`btn btn--full ${(hasSpun && !hasChosen) ? 'disabled' : ''}`}
+            onClick={handleSpin}
+            disabled={hasSpun && !hasChosen}
+          >
             Roztočte flašku
           </button>
         </div>
+      </section>
 
-        {currentText && (
-          <div className="spin-bottle__dare">
-            <h2>{currentText.type === 'Úkol' ? 'Tvůj úkol:' : 'Otázka pravdy:'}</h2>
+      {showOverlay && currentText && (
+        <div className="overlay" onClick={handleOverlayClose}>
+          <div className="overlay__text">
+            <h2>{currentText.type === 'Úkol' ? 'Úkol:' : 'Otázka:'}</h2>
             <p>{currentText.text}</p>
           </div>
-        )}
-      </section>
+        </div>
+      )}
     </div>
   );
 };
