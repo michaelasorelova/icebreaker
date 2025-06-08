@@ -36,6 +36,7 @@ export const SpinBottle = () => {
     };
     loadTruths();
   }, []);
+  
 
   const handleSpin = () => {
     const targetAngle = Math.random() < 0.5 ? 0 : 180;

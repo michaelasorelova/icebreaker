@@ -2,6 +2,13 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { QuestionCard } from '../../components/QuestionCard';
 import './style.css';
+import React from "react";
+import Slider from "react-slick";
+
+
+
+
+
 
 export const QuestionCards = () => {
   const [liked, setLiked] = useState(false);
@@ -82,13 +89,10 @@ export const QuestionCards = () => {
           setCurrentIndex={setCurrentIndex}
         /> */}
 
-        <div className="question-cards__track">
-        <QuestionCard
-        questions={questions}
-        currentIndex={currentIndex}
-        setCurrentIndex={setCurrentIndex}
-        />
-        </div>
+   <div className="question-cards__track">
+  <CenterMode questions={questions} />
+</div>
+
 
 
 
@@ -122,4 +126,29 @@ export const QuestionCards = () => {
   );
 };
 
+
+
+function CenterMode({ questions }) {
+  const settings = {
+    className: "center",
+    centerMode: true,
+    infinite: false,
+    centerPadding: "60px",  
+    slidesToShow: 1,        
+    swipeToSlide: true,
+    speed: 500,
+  };
+
+  return (
+    <div className="slider-container">
+      <Slider {...settings}>
+        {questions.map((question, index) => (
+          <div key={index}>
+            <QuestionCard question={question.text} />
+          </div>
+        ))}
+      </Slider>
+    </div>
+  );
+}
 
