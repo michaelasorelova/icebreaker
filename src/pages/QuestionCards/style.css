@@ -44,7 +44,7 @@
 }
 
 .question-card__button--save.active i {
-  color: #ffb700;
+  color: #5ede27;
 }
 
 
@@ -66,6 +66,6 @@
 .progress-text {
   text-align: center;
   font-size: 0.9rem;
-  color: #333;
+  color: #d1c5c5;
   margin-bottom: 1rem;
 }

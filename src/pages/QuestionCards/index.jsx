@@ -26,10 +26,10 @@ export const QuestionCards = () => {
           allQuestions = json[category] || [];
         }
 
-        // Načti otázky, které jsou ve "koši"
+        
         const deleted = JSON.parse(localStorage.getItem("myDeleted")) || [];
 
-        // Odfiltruj otázky, které jsou v koši (podle textu)
+        
         const filteredQuestions = allQuestions.filter(
           (q) => !deleted.includes(q.text)
         );
