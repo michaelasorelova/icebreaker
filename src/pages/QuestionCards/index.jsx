@@ -40,7 +40,7 @@ export const QuestionCards = () => {
 
     fetchQuestions();
   }, [category]);
-const handleSaveFavorite = () => {
+  const handleSaveFavorite = () => {
   const currentQuestion = questions[currentIndex]?.text;
   if (!currentQuestion) return;
 
@@ -76,11 +76,21 @@ const handleSaveFavorite = () => {
           {categoryTitles[category] || 'Otázky'}
         </h2>
 
-        <QuestionCard
+        {/* <QuestionCard
           questions={questions}
           currentIndex={currentIndex}
           setCurrentIndex={setCurrentIndex}
+        /> */}
+
+        <div className="question-cards__track">
+        <QuestionCard
+        questions={questions}
+        currentIndex={currentIndex}
+        setCurrentIndex={setCurrentIndex}
         />
+        </div>
+
+
 
         <div className="question-card__buttons">
           <button
@@ -111,3 +121,5 @@ const handleSaveFavorite = () => {
     </div>
   );
 };
+
+

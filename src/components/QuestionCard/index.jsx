@@ -56,3 +56,4 @@ export const QuestionCard = ({ questions, currentIndex, setCurrentIndex }) => {
     </div>
   );
 };
+

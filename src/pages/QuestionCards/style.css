@@ -45,3 +45,18 @@
 .question-card__button--save.active i {
   color: #ffb700;
 }
+
+.question-cards__track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.question-card {
+  min-width: 80%;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
