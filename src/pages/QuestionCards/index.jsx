@@ -7,7 +7,6 @@ import Slider from "react-slick";
 export const QuestionCards = () => {
   const [likedQuestions, setLikedQuestions] = useState(new Set());
   const [dislikedQuestions, setDislikedQuestions] = useState(new Set());
-  const [savedQuestions, setSavedQuestions] = useState(new Set());
   const { category } = useParams();
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -52,27 +51,27 @@ export const QuestionCards = () => {
 
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
-    setSavedQuestions(new Set(favorites));
+    setLikedQuestions(new Set(favorites));
   }, []);
 
   const currentQuestion = questions[currentIndex]?.text;
 
-  const handleSaveFavorite = () => {
+  const handleLikeFavorite = () => {
     if (!currentQuestion) return;
     const existingFavorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
-    const isAlreadySaved = existingFavorites.includes(currentQuestion);
+    const isAlreadyLiked = existingFavorites.includes(currentQuestion);
     let updatedFavorites;
 
-    if (isAlreadySaved) {
+    if (isAlreadyLiked) {
       updatedFavorites = existingFavorites.filter(q => q !== currentQuestion);
-      setSavedQuestions(prev => {
+      setLikedQuestions(prev => {
         const newSet = new Set(prev);
         newSet.delete(currentQuestion);
         return newSet;
       });
     } else {
       updatedFavorites = [...existingFavorites, currentQuestion];
-      setSavedQuestions(prev => new Set(prev).add(currentQuestion));
+      setLikedQuestions(prev => new Set(prev).add(currentQuestion));
     }
 
     localStorage.setItem("myFavorites", JSON.stringify(updatedFavorites));
@@ -88,7 +87,7 @@ export const QuestionCards = () => {
         newSet.add(currentQuestion);
         setLikedQuestions(l => {
           const lik = new Set(l);
-          lik.delete(currentQuestion); // zrušit like, pokud byl
+          lik.delete(currentQuestion);
           return lik;
         });
       }
@@ -135,9 +134,19 @@ export const QuestionCards = () => {
             style={{ width: `${progressPercent}%` }}
           />
         </div>
-        <p className="progress-text">{currentIndex + 1} / {questions.length}</p>
 
         <div className="question-card__buttons">
+          {/* Like */}
+          <button
+            className="question-card__button question-card__button--like"
+            aria-label="To se mi líbí"
+            onClick={handleLikeFavorite}
+          >
+            <i className={likedQuestions.has(currentQuestion)
+              ? "fi fi-sr-thumbs-up"
+              : "fi fi-rr-social-network"}></i>
+          </button>
+
           {/* Dislike */}
           <button
             className="question-card__button question-card__button--dislike"
@@ -150,17 +159,6 @@ export const QuestionCards = () => {
             <i className={dislikedQuestions.has(currentQuestion)
               ? "fi fi-sr-thumbs-down"
               : "fi fi-rr-hand"}></i>
-          </button>
-
-          {/* Like */}
-          <button
-            className="question-card__button question-card__button--save"
-            aria-label="Přidat k oblíbeným"
-            onClick={handleSaveFavorite}
-          >
-            <i className={savedQuestions.has(currentQuestion)
-              ? "fi fi-sr-thumbs-up"
-              : "fi fi-rr-social-network"}></i>
           </button>
         </div>
       </section>

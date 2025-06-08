@@ -1,4 +1,4 @@
-.favorite-question__list ul {
+.deleted-question__list ul {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -7,18 +7,18 @@
   text-align: left;
 }
 
-.favorite-question__list li {
+.deleted-question__list li {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.favorite-question__button {
+.deleted-question__button {
   background: transparent;
   border: none;
 }
 
-.favorite-question__button i {
+.deleted-question__button i {
   font-size: 2rem;
   color: #FFF;
 }

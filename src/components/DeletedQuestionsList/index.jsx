@@ -1,16 +1,16 @@
 import './style.css';
 
-export const TrashQuestionList = ({ deleted, restoreDeleted }) => {
+export const DeletedQuestionsList = ({ deleted, restoreDeleted }) => {
   return (
-    <div className="favorite-question__list">
+    <div className="deleted-question__list">
       <ul>
         {deleted.length === 0 && <li>Nemáš zatím žádné smazané otázky.</li>}
         {deleted.map((question, index) => (
           <li key={index}>
             <button
               onClick={() => restoreDeleted(index)}
-              className="favorite-question__button"
-              aria-label="Obnovit otázku"
+              className="deleted-question__button"
+              aria-label="Obnovit smazanou otázku"
             >
               <i className="fi fi-sr-cross-circle"></i>
             </button>
