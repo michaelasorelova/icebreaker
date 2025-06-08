@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { QuestionCard } from '../../components/QuestionCard';
 import './style.css';
-import React from "react";
 import Slider from "react-slick";
 
 export const QuestionCards = () => {
@@ -27,8 +26,16 @@ export const QuestionCards = () => {
           allQuestions = json[category] || [];
         }
 
-        if (allQuestions.length > 0) {
-          const shuffled = allQuestions.sort(() => 0.5 - Math.random());
+        // Načti otázky, které jsou ve "koši"
+        const deleted = JSON.parse(localStorage.getItem("myDeleted")) || [];
+
+        // Odfiltruj otázky, které jsou v koši (podle textu)
+        const filteredQuestions = allQuestions.filter(
+          (q) => !deleted.includes(q.text)
+        );
+
+        if (filteredQuestions.length > 0) {
+          const shuffled = filteredQuestions.sort(() => 0.5 - Math.random());
           const selected = shuffled.slice(0, 25);
           setQuestions(selected);
         } else {
@@ -71,24 +78,6 @@ export const QuestionCards = () => {
     localStorage.setItem("myFavorites", JSON.stringify(updatedFavorites));
   };
 
-  const handleLike = () => {
-    if (!currentQuestion) return;
-    setLikedQuestions(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(currentQuestion)) {
-        newSet.delete(currentQuestion);
-      } else {
-        newSet.add(currentQuestion);
-        setDislikedQuestions(d => {
-          const dis = new Set(d);
-          dis.delete(currentQuestion); // zrušit dislike, pokud byl
-          return dis;
-        });
-      }
-      return newSet;
-    });
-  };
-
   const handleDislike = () => {
     if (!currentQuestion) return;
     setDislikedQuestions(prev => {
@@ -105,6 +94,17 @@ export const QuestionCards = () => {
       }
       return newSet;
     });
+    }
+  const handleMoveToTrash = () => {
+    const currentQuestion = questions[currentIndex]?.text;
+    if (!currentQuestion) return;
+
+    const existingDeleted = JSON.parse(localStorage.getItem("myDeleted")) || [];
+
+    if (!existingDeleted.includes(currentQuestion)) {
+      const updatedDeleted = [...existingDeleted, currentQuestion];
+      localStorage.setItem("myDeleted", JSON.stringify(updatedDeleted));
+    }
   };
 
   const categoryTitles = {
@@ -142,7 +142,10 @@ export const QuestionCards = () => {
           <button
             className="question-card__button question-card__button--dislike"
             aria-label="To se mi nelíbí"
-            onClick={handleDislike}
+            onClick={() => {
+              handleDislike();
+              handleMoveToTrash();
+            }}
           >
             <i className={dislikedQuestions.has(currentQuestion)
               ? "fi fi-sr-thumbs-down"
@@ -151,24 +154,13 @@ export const QuestionCards = () => {
 
           {/* Like */}
           <button
-            className="question-card__button question-card__button--like"
-            aria-label="To se mi líbí"
-            onClick={handleLike}
-          >
-            <i className={likedQuestions.has(currentQuestion)
-              ? "fi fi-sr-thumbs-up"
-              : "fi fi-rr-social-network"}></i>
-          </button>
-
-          {/* Save */}
-          <button
             className="question-card__button question-card__button--save"
             aria-label="Přidat k oblíbeným"
             onClick={handleSaveFavorite}
           >
             <i className={savedQuestions.has(currentQuestion)
-              ? "fi fi-sr-bookmark"
-              : "fi fi-rr-bookmark"}></i>
+              ? "fi fi-sr-thumbs-up"
+              : "fi fi-rr-social-network"}></i>
           </button>
         </div>
       </section>

@@ -13,14 +13,11 @@ import { Header } from './components/Header';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { FavoriteQuestions } from './pages/FavoriteQuestions';
+import { QuestionTrash } from './pages/QuestionTrash';
 import { QuestionCards } from './pages/QuestionCards';
 import { SpinBottle } from './pages/SpinBottle';
 import { Error } from "./pages/Error";
 import { Contact } from "./pages/Contact";
-
-
-
-
 
 const App = () => {
   return (
@@ -42,6 +39,7 @@ const router = createBrowserRouter([
       { path: 'question-cards/:category', element: <QuestionCards /> },
       { path: 'spin', element: <SpinBottle /> },
       { path: 'favorite-questions', element: <FavoriteQuestions /> },
+      { path: 'question-trash', element: <QuestionTrash /> },
       { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
       { path: '*', element: <Error /> },

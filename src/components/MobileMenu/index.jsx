@@ -13,6 +13,9 @@ export const MobileMenu = ({ isOpen, onClose }) => {
             <Link className="mobile-menu__link" to="/favorite-questions" onClick={onClose}>Oblíbené otázky</Link>
           </li>
           <li className="mobile-menu__item">
+            <Link className="mobile-menu__link" to="/question-trash" onClick={onClose}>Smazané otázky</Link>
+          </li>
+          <li className="mobile-menu__item">
             <Link className="mobile-menu__link" to="/about" onClick={onClose}>O projektu</Link>
           </li>
           <li className="mobile-menu__item">
