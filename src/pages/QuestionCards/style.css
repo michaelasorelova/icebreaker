@@ -20,8 +20,6 @@
   width: 64px;
   border: none;
   border-radius: 50%;
-  cursor: pointer;
-  transition: transform 0.2s ease;
 }
 
 .question-card__button i {
