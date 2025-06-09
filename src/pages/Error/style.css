@@ -1,3 +1,17 @@
+.error__text {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.error__text i {
+  color: #FF0000;
+  font-size: 6rem;
+  animation: pulse 1.2s infinite ease-in-out;
+  transition: transform 0.2s;
+}
+
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
@@ -6,9 +20,3 @@
     transform: scale(1.2);
   }
 }
-
-.pulsing-heart {
-  animation: pulse 1.2s infinite ease-in-out;
-  display: inline-block;
-}
-

@@ -14,7 +14,7 @@ export const Error = () => {
             Stejně jako naděje, že vám Aneta ještě někdy odepíše.
           </p>
 
-          <i className="fi fi-sr-heart-crack pulsing-heart" style={{ fontSize: '8rem', marginTop: '1rem', color: 'crimson' }}></i>
+          <i className="fi fi-sr-heart-crack"></i>
         </div>
 
       </section>
