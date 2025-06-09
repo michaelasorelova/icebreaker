@@ -1,6 +1,6 @@
 import './style.css';
 import { useEffect, useState } from 'react';
-import { FavoriteQuestion } from '../../components/FavoriteQuestion';
+import { FavoriteQuestionsList } from '../../components/FavoriteQuestionsList';
 
 export const FavoriteQuestions = () => {
   const [favorites, setFavorites] = useState([]);
@@ -24,7 +24,7 @@ export const FavoriteQuestions = () => {
       <section className="favorite-questions">
         <h2 className="favorite-questions__heading">Oblíbené otázky</h2>
         <div className="favorite-questions__questions">
-          <FavoriteQuestion favorites={favorites} removeFavorite={removeFavorite} />
+          <FavoriteQuestionsList favorites={favorites} removeFavorite={removeFavorite} />
         </div>
       </section>
     </div>

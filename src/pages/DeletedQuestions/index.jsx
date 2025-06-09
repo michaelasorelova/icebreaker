@@ -24,7 +24,10 @@ export const DeletedQuestions = () => {
       <section className="question-trash">
         <h2 className="question-trash__heading">Smazané otázky</h2>
         <div className="question-trash__questions">
-          <DeletedQuestionsList deleted={deleted} restoreDeleted={handleRestore} />
+          <DeletedQuestionsList
+            deletedQuestions={deleted}
+            restoreDeletedQuestions={handleRestore}
+          />
         </div>
       </section>
     </div>

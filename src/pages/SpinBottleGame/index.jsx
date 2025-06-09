@@ -1,8 +1,10 @@
 import './style.css';
 import wineBottle from "./img/wine-bottle.svg";
 import { useState, useEffect } from "react";
+import { SpinBottleButtons } from "../../components/SpinBottleButtons";
+import { SpinBottleOverlay } from "../../components/SpinBottleOverlay";
 
-export const SpinBottle = () => {
+export const SpinBottleGame = () => {
   const [rotation, setRotation] = useState(0);
   const [dares, setDares] = useState([]);
   const [truths, setTruths] = useState([]);
@@ -36,7 +38,6 @@ export const SpinBottle = () => {
     };
     loadTruths();
   }, []);
-  
 
   const handleSpin = () => {
     const targetAngle = Math.random() < 0.5 ? 0 : 180;
@@ -47,24 +48,19 @@ export const SpinBottle = () => {
   };
 
   const handleDareClick = () => {
-    if (!dares.length) {
-      setCurrentText({ type: 'Úkol', text: 'Úkoly nebyly načteny.' });
-    } else {
-      const randomIndex = Math.floor(Math.random() * dares.length);
-      const selectedDare = dares[randomIndex];
-      setCurrentText({ type: 'Úkol', text: selectedDare });
-    }
+    const text = dares.length
+      ? dares[Math.floor(Math.random() * dares.length)]
+      : 'Úkoly nebyly načteny.';
+    setCurrentText({ type: 'Úkol', text });
     setShowOverlay(true);
     setHasChosen(true);
   };
 
   const handleTruthClick = () => {
-    if (!truths.length) {
-      setCurrentText({ type: 'Pravda', text: 'Otázky pravdy nebyly načteny.' });
-    } else {
-      const random = truths[Math.floor(Math.random() * truths.length)];
-      setCurrentText({ type: 'Pravda', text: random });
-    }
+    const text = truths.length
+      ? truths[Math.floor(Math.random() * truths.length)]
+      : 'Otázky pravdy nebyly načteny.';
+    setCurrentText({ type: 'Pravda', text });
     setShowOverlay(true);
     setHasChosen(true);
   };
@@ -78,22 +74,12 @@ export const SpinBottle = () => {
   return (
     <div className="container">
       <section className="spin-bottle">
-        <div className="spin-bottle__buttons">
-          <button
-            className={`btn ${(!hasSpun || hasChosen) ? 'disabled' : ''}`}
-            onClick={handleTruthClick}
-            disabled={!hasSpun || hasChosen}
-          >
-            Pravda
-          </button>
-            <button
-              className={`btn ${(!hasSpun || hasChosen) ? 'disabled' : ''}`}
-              onClick={handleDareClick}
-              disabled={!hasSpun || hasChosen}
-            >
-            Úkol
-          </button>
-        </div>
+        <SpinBottleButtons
+          hasSpun={hasSpun}
+          hasChosen={hasChosen}
+          onTruthClick={handleTruthClick}
+          onDareClick={handleDareClick}
+        />
 
         <img
           className="spin-bottle__image"
@@ -114,13 +100,8 @@ export const SpinBottle = () => {
         </div>
       </section>
 
-      {showOverlay && currentText && (
-        <div className="overlay" onClick={handleOverlayClose}>
-          <div className="overlay__text">
-            <h2>{currentText.type === 'Úkol' ? 'Úkol:' : 'Otázka:'}</h2>
-            <p>{currentText.text}</p>
-          </div>
-        </div>
+      {showOverlay && (
+        <SpinBottleOverlay currentText={currentText} onClose={handleOverlayClose} />
       )}
     </div>
   );

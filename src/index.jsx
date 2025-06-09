@@ -15,7 +15,7 @@ import { About } from './pages/About';
 import { FavoriteQuestions } from './pages/FavoriteQuestions';
 import { DeletedQuestions } from './pages/DeletedQuestions';
 import { QuestionCards } from './pages/QuestionCards';
-import { SpinBottle } from './pages/SpinBottle';
+import { SpinBottleGame } from './pages/SpinBottleGame';
 import { Error } from "./pages/Error";
 import { Contact } from "./pages/Contact";
 
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: 'question-cards/:category', element: <QuestionCards /> },
-      { path: 'spin', element: <SpinBottle /> },
+      { path: 'spin-bottle-game', element: <SpinBottleGame /> },
       { path: 'favorite-questions', element: <FavoriteQuestions /> },
       { path: 'deleted-questions', element: <DeletedQuestions /> },
       { path: 'about', element: <About /> },

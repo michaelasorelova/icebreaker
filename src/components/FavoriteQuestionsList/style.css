@@ -1,4 +1,4 @@
-.deleted-questions__list {
+.favorite-questions-list__list {
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
@@ -7,7 +7,7 @@
   text-align: left;
 }
 
-.deleted-questions__item {
+.favorite-questions-list__item {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -16,7 +16,7 @@
   border-radius: 0.5rem;
 }
 
-.deleted-questions__button {
+.favorite-questions-list__button {
   background: transparent;
   border: none;
 }
@@ -26,12 +26,12 @@
   font-size: 1.5rem;
 }
 
-.deleted-questions__text {
+.favorite-questions-list__button i {
   color: #FFF;
-  flex: 1;
+  font-size: 1.5rem;
 }
 
-.deleted-questions__empty {
+.favorite-questions-list__empty {
   text-align: center;
   color: #D3D3D3;
   font-style: italic;
