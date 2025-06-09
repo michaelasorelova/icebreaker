@@ -3,11 +3,18 @@ import { useEffect, useState } from 'react';
 import { QuestionCard } from '../../components/QuestionCard';
 import './style.css';
 import Slider from "react-slick";
+import {
+  getDeletedQuestions,
+  getFavoriteQuestions,
+  saveFavoriteQuestions,
+  addToDeleted,
+  filterQuestions,
+  shuffleAndSlice
+} from '../../utils/questionCardsUtils';
 
 export const QuestionCards = () => {
   const [likedQuestions, setLikedQuestions] = useState(new Set());
   const [dislikedQuestions, setDislikedQuestions] = useState(new Set());
-  const [savedQuestions, setSavedQuestions] = useState(new Set());
   const { category } = useParams();
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -18,26 +25,14 @@ export const QuestionCards = () => {
         const response = await fetch('/api/question_categories.json');
         const json = await response.json();
 
-        let allQuestions = [];
+        let allQuestions = category === 'mix_vseho'
+          ? Object.values(json).flat()
+          : json[category] || [];
 
-        if (category === 'mix_vseho') {
-          allQuestions = Object.values(json).flat();
-        } else {
-          allQuestions = json[category] || [];
-        }
+        const filtered = filterQuestions(allQuestions, getDeletedQuestions());
 
-        
-        const deleted = JSON.parse(localStorage.getItem("myDeleted")) || [];
-
-        
-        const filteredQuestions = allQuestions.filter(
-          (q) => !deleted.includes(q.text)
-        );
-
-        if (filteredQuestions.length > 0) {
-          const shuffled = filteredQuestions.sort(() => 0.5 - Math.random());
-          const selected = shuffled.slice(0, 25);
-          setQuestions(selected);
+        if (filtered.length > 0) {
+          setQuestions(shuffleAndSlice(filtered, 25));
         } else {
           setQuestions([{ text: 'V této kategorii nejsou žádné otázky.' }]);
         }
@@ -51,60 +46,66 @@ export const QuestionCards = () => {
   }, [category]);
 
   useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
-    setSavedQuestions(new Set(favorites));
+    const favorites = getFavoriteQuestions();
+    setLikedQuestions(new Set(favorites));
   }, []);
 
   const currentQuestion = questions[currentIndex]?.text;
 
-  const handleSaveFavorite = () => {
+  const handleLikeFavorite = () => {
     if (!currentQuestion) return;
-    const existingFavorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
-    const isAlreadySaved = existingFavorites.includes(currentQuestion);
-    let updatedFavorites;
+    const favorites = getFavoriteQuestions();
+    let updated;
 
-    if (isAlreadySaved) {
-      updatedFavorites = existingFavorites.filter(q => q !== currentQuestion);
-      setSavedQuestions(prev => {
+    if (favorites.includes(currentQuestion)) {
+      updated = favorites.filter(q => q !== currentQuestion);
+      setLikedQuestions(prev => {
         const newSet = new Set(prev);
         newSet.delete(currentQuestion);
         return newSet;
       });
     } else {
-      updatedFavorites = [...existingFavorites, currentQuestion];
-      setSavedQuestions(prev => new Set(prev).add(currentQuestion));
+      updated = [...favorites, currentQuestion];
+      setLikedQuestions(prev => {
+        const newSet = new Set(prev);
+        newSet.add(currentQuestion);
+        return newSet;
+      });
+
+      if (dislikedQuestions.has(currentQuestion)) {
+        const newDisliked = new Set(dislikedQuestions);
+        newDisliked.delete(currentQuestion);
+        setDislikedQuestions(newDisliked);
+      }
     }
 
-    localStorage.setItem("myFavorites", JSON.stringify(updatedFavorites));
+    saveFavoriteQuestions(updated);
   };
 
   const handleDislike = () => {
     if (!currentQuestion) return;
-    setDislikedQuestions(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(currentQuestion)) {
-        newSet.delete(currentQuestion);
-      } else {
-        newSet.add(currentQuestion);
-        setLikedQuestions(l => {
-          const lik = new Set(l);
-          lik.delete(currentQuestion); // zrušit like, pokud byl
-          return lik;
-        });
+
+    const isDisliked = dislikedQuestions.has(currentQuestion);
+    const newDisliked = new Set(dislikedQuestions);
+
+    if (isDisliked) {
+      newDisliked.delete(currentQuestion);
+    } else {
+      newDisliked.add(currentQuestion);
+
+      if (likedQuestions.has(currentQuestion)) {
+        const newLiked = new Set(likedQuestions);
+        newLiked.delete(currentQuestion);
+        setLikedQuestions(newLiked);
+
+        const favorites = getFavoriteQuestions();
+        const updated = favorites.filter(q => q !== currentQuestion);
+        saveFavoriteQuestions(updated);
       }
-      return newSet;
-    });
     }
-  const handleMoveToTrash = () => {
-    const currentQuestion = questions[currentIndex]?.text;
-    if (!currentQuestion) return;
 
-    const existingDeleted = JSON.parse(localStorage.getItem("myDeleted")) || [];
-
-    if (!existingDeleted.includes(currentQuestion)) {
-      const updatedDeleted = [...existingDeleted, currentQuestion];
-      localStorage.setItem("myDeleted", JSON.stringify(updatedDeleted));
-    }
+    setDislikedQuestions(newDisliked);
+    addToDeleted(currentQuestion);
   };
 
   const categoryTitles = {
@@ -116,53 +117,58 @@ export const QuestionCards = () => {
     mix_vseho: 'Mix všeho',
   };
 
+  const isEmptyMessage = questions.length === 1 &&
+    ['V této kategorii nejsou žádné otázky.', 'Nepodařilo se načíst otázky.'].includes(questions[0]?.text);
+
   const progressPercent = questions.length > 0 ? ((currentIndex + 1) / questions.length) * 100 : 0;
 
   return (
-    <div className="container">
+    <div className="container fullwidth">
       <section className="question-cards">
         <h2 className="question-cards__heading">
           {categoryTitles[category] || 'Otázky'}
         </h2>
 
-        <div className="question-cards__track">
-          <CenterMode questions={questions} onSlideChange={setCurrentIndex} />
-        </div>
+        {isEmptyMessage ? (
+          <p className="question-cards__empty">{questions[0].text}</p>
+        ) : (
+          <>
+            <div className="question-cards__track">
+              <CenterMode questions={questions} onSlideChange={setCurrentIndex} />
+            </div>
 
-        <div className="custom-progress-bar">
-          <div
-            className="custom-progress-bar__fill"
-            style={{ width: `${progressPercent}%` }}
-          />
-        </div>
-        <p className="progress-text">{currentIndex + 1} / {questions.length}</p>
+            <div className="custom-progress-bar">
+              <div
+                className="custom-progress-bar__fill"
+                style={{ width: `${progressPercent}%` }}
+              />
+            </div>
 
-        <div className="question-card__buttons">
-          {/* Dislike */}
-          <button
-            className="question-card__button question-card__button--dislike"
-            aria-label="To se mi nelíbí"
-            onClick={() => {
-              handleDislike();
-              handleMoveToTrash();
-            }}
-          >
-            <i className={dislikedQuestions.has(currentQuestion)
-              ? "fi fi-sr-thumbs-down"
-              : "fi fi-rr-hand"}></i>
-          </button>
+            <div className="question-card__buttons">
 
-          {/* Like */}
-          <button
-            className="question-card__button question-card__button--save"
-            aria-label="Přidat k oblíbeným"
-            onClick={handleSaveFavorite}
-          >
-            <i className={savedQuestions.has(currentQuestion)
-              ? "fi fi-sr-thumbs-up"
-              : "fi fi-rr-social-network"}></i>
-          </button>
-        </div>
+              <button
+                className="question-card__button question-card__button--like"
+                aria-label="To se mi líbí"
+                onClick={handleLikeFavorite}
+              >
+                <i className={likedQuestions.has(currentQuestion)
+                  ? "fi fi-sr-thumbs-up"
+                  : "fi fi-rr-social-network"}></i>
+              </button>
+
+              <button
+                className="question-card__button question-card__button--dislike"
+                aria-label="To se mi nelíbí"
+                onClick={handleDislike}
+              >
+                <i className={dislikedQuestions.has(currentQuestion)
+                  ? "fi fi-sr-thumbs-down"
+                  : "fi fi-rr-hand"}></i>
+              </button>
+              
+            </div>
+          </>
+        )}
       </section>
     </div>
   );

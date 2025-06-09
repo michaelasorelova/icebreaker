@@ -1,0 +1,46 @@
+.deleted-questions__list,
+.favorite-questions-list__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  list-style: none;
+  font-size: 1.25rem;
+  text-align: left;
+}
+
+.deleted-questions__item,
+.favorite-questions-list__item {
+  display: flex;
+  align-items: center;
+  gap: 0.750rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.deleted-questions__button,
+.favorite-questions-list__button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.deleted-questions__button i,
+.favorite-questions-list__button i {
+  color: #FFF;
+  font-size: 1.5rem;
+}
+
+.deleted-questions__text,
+.favorite-questions__text {
+  color: #FFF;
+  flex: 1;
+}
+
+.deleted-questions__empty,
+.favorite-questions-list__empty {
+  text-align: center;
+  color: #D3D3D3;
+  font-style: italic;
+}

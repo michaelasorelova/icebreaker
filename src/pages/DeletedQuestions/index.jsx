@@ -1,8 +1,8 @@
 import './style.css';
 import { useEffect, useState } from 'react';
-import { TrashQuestionList } from '../../components/TrashQuestionList';
+import { QuestionsList } from '../../components/QuestionsList';
 
-export const QuestionTrash = () => {
+export const DeletedQuestions = () => {
   const [deleted, setDeleted] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,13 @@ export const QuestionTrash = () => {
       <section className="question-trash">
         <h2 className="question-trash__heading">Smazané otázky</h2>
         <div className="question-trash__questions">
-          <TrashQuestionList deleted={deleted} restoreDeleted={handleRestore} />
+          <QuestionsList
+            items={deleted}
+            onAction={handleRestore}
+            emptyMessage="Nemáte zatím žádné smazané otázky."
+            ariaLabel="Obnovit smazanou otázku"
+            classPrefix="deleted-questions"
+          />
         </div>
       </section>
     </div>

@@ -50,7 +50,7 @@ export const Home = () => {
             <button className="btn" onClick={() => handleNavigate('mix_vseho')}>
               Mix všeho
             </button>
-            <button className="btn btn--full" onClick={() => navigate('/spin')}>
+            <button className="btn btn--full" onClick={() => navigate('/spin-bottle-game')}>
               Pravda nebo úkol
             </button>
           </div>
