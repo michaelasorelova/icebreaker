@@ -10,7 +10,7 @@ import {
   addToDeleted,
   filterQuestions,
   shuffleAndSlice
-} from '../../utils/questionUtils';
+} from '../../utils/questionCardsUtils';
 
 export const QuestionCards = () => {
   const [likedQuestions, setLikedQuestions] = useState(new Set());
@@ -66,7 +66,17 @@ export const QuestionCards = () => {
       });
     } else {
       updated = [...favorites, currentQuestion];
-      setLikedQuestions(prev => new Set(prev).add(currentQuestion));
+      setLikedQuestions(prev => {
+        const newSet = new Set(prev);
+        newSet.add(currentQuestion);
+        return newSet;
+      });
+
+      if (dislikedQuestions.has(currentQuestion)) {
+        const newDisliked = new Set(dislikedQuestions);
+        newDisliked.delete(currentQuestion);
+        setDislikedQuestions(newDisliked);
+      }
     }
 
     saveFavoriteQuestions(updated);
@@ -74,21 +84,27 @@ export const QuestionCards = () => {
 
   const handleDislike = () => {
     if (!currentQuestion) return;
-    setDislikedQuestions(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(currentQuestion)) {
-        newSet.delete(currentQuestion);
-      } else {
-        newSet.add(currentQuestion);
-        setLikedQuestions(prev => {
-          const updated = new Set(prev);
-          updated.delete(currentQuestion);
-          return updated;
-        });
-      }
-      return newSet;
-    });
 
+    const isDisliked = dislikedQuestions.has(currentQuestion);
+    const newDisliked = new Set(dislikedQuestions);
+
+    if (isDisliked) {
+      newDisliked.delete(currentQuestion);
+    } else {
+      newDisliked.add(currentQuestion);
+
+      if (likedQuestions.has(currentQuestion)) {
+        const newLiked = new Set(likedQuestions);
+        newLiked.delete(currentQuestion);
+        setLikedQuestions(newLiked);
+
+        const favorites = getFavoriteQuestions();
+        const updated = favorites.filter(q => q !== currentQuestion);
+        saveFavoriteQuestions(updated);
+      }
+    }
+
+    setDislikedQuestions(newDisliked);
     addToDeleted(currentQuestion);
   };
 
@@ -101,49 +117,58 @@ export const QuestionCards = () => {
     mix_vseho: 'Mix všeho',
   };
 
+  const isEmptyMessage = questions.length === 1 &&
+    ['V této kategorii nejsou žádné otázky.', 'Nepodařilo se načíst otázky.'].includes(questions[0]?.text);
+
   const progressPercent = questions.length > 0 ? ((currentIndex + 1) / questions.length) * 100 : 0;
 
   return (
-    <div className="container">
+    <div className="container fullwidth">
       <section className="question-cards">
         <h2 className="question-cards__heading">
           {categoryTitles[category] || 'Otázky'}
         </h2>
 
-        <div className="question-cards__track">
-          <CenterMode questions={questions} onSlideChange={setCurrentIndex} />
-        </div>
+        {isEmptyMessage ? (
+          <p className="question-cards__empty">{questions[0].text}</p>
+        ) : (
+          <>
+            <div className="question-cards__track">
+              <CenterMode questions={questions} onSlideChange={setCurrentIndex} />
+            </div>
 
-        <div className="custom-progress-bar">
-          <div
-            className="custom-progress-bar__fill"
-            style={{ width: `${progressPercent}%` }}
-          />
-        </div>
+            <div className="custom-progress-bar">
+              <div
+                className="custom-progress-bar__fill"
+                style={{ width: `${progressPercent}%` }}
+              />
+            </div>
 
-        <div className="question-card__buttons">
-          {/* Like */}
-          <button
-            className="question-card__button question-card__button--like"
-            aria-label="To se mi líbí"
-            onClick={handleLikeFavorite}
-          >
-            <i className={likedQuestions.has(currentQuestion)
-              ? "fi fi-sr-thumbs-up"
-              : "fi fi-rr-social-network"}></i>
-          </button>
+            <div className="question-card__buttons">
 
-          {/* Dislike */}
-          <button
-            className="question-card__button question-card__button--dislike"
-            aria-label="To se mi nelíbí"
-            onClick={handleDislike}
-          >
-            <i className={dislikedQuestions.has(currentQuestion)
-              ? "fi fi-sr-thumbs-down"
-              : "fi fi-rr-hand"}></i>
-          </button>
-        </div>
+              <button
+                className="question-card__button question-card__button--like"
+                aria-label="To se mi líbí"
+                onClick={handleLikeFavorite}
+              >
+                <i className={likedQuestions.has(currentQuestion)
+                  ? "fi fi-sr-thumbs-up"
+                  : "fi fi-rr-social-network"}></i>
+              </button>
+
+              <button
+                className="question-card__button question-card__button--dislike"
+                aria-label="To se mi nelíbí"
+                onClick={handleDislike}
+              >
+                <i className={dislikedQuestions.has(currentQuestion)
+                  ? "fi fi-sr-thumbs-down"
+                  : "fi fi-rr-hand"}></i>
+              </button>
+              
+            </div>
+          </>
+        )}
       </section>
     </div>
   );

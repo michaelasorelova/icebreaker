@@ -1,6 +1,6 @@
 import './style.css';
 import { useEffect, useState } from 'react';
-import { FavoriteQuestionsList } from '../../components/FavoriteQuestionsList';
+import { QuestionsList } from '../../components/QuestionsList';
 
 export const FavoriteQuestions = () => {
   const [favorites, setFavorites] = useState([]);
@@ -11,7 +11,7 @@ export const FavoriteQuestions = () => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("myFavorites", JSON.stringify(favorites));
+    localStorage.setItem('myFavorites', JSON.stringify(favorites));
   }, [favorites]);
 
   const removeFavorite = (indexToRemove) => {
@@ -24,7 +24,13 @@ export const FavoriteQuestions = () => {
       <section className="favorite-questions">
         <h2 className="favorite-questions__heading">Oblíbené otázky</h2>
         <div className="favorite-questions__questions">
-          <FavoriteQuestionsList favorites={favorites} removeFavorite={removeFavorite} />
+          <QuestionsList
+            items={favorites}
+            onAction={removeFavorite}
+            emptyMessage="Nemáte zatím žádné oblíbené otázky."
+            ariaLabel="Odebrat z oblíbených"
+            classPrefix="favorite-questions-list"
+          />
         </div>
       </section>
     </div>
