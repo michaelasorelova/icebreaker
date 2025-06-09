@@ -1,18 +1,9 @@
 import './style.css';
-import { useEffect, useState } from 'react';
 import { QuestionsList } from '../../components/QuestionsList';
+import { useLocalStorageState } from '../../utils/useLocalStorageState';
 
 export const FavoriteQuestions = () => {
-  const [favorites, setFavorites] = useState([]);
-
-  useEffect(() => {
-    const storedFavorites = JSON.parse(localStorage.getItem('myFavorites')) || [];
-    setFavorites(storedFavorites);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('myFavorites', JSON.stringify(favorites));
-  }, [favorites]);
+  const [favorites, setFavorites] = useLocalStorageState('myFavorites', []);
 
   const removeFavorite = (indexToRemove) => {
     const updatedFavorites = favorites.filter((_, index) => index !== indexToRemove);
@@ -22,7 +13,9 @@ export const FavoriteQuestions = () => {
   return (
     <div className="container">
       <section className="favorite-questions">
+
         <h2 className="favorite-questions__heading">Oblíbené otázky</h2>
+        
         <div className="favorite-questions__questions">
           <QuestionsList
             items={favorites}
@@ -32,6 +25,7 @@ export const FavoriteQuestions = () => {
             classPrefix="favorite-questions-list"
           />
         </div>
+
       </section>
     </div>
   );

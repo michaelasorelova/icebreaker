@@ -1,18 +1,9 @@
 import './style.css';
-import { useEffect, useState } from 'react';
 import { QuestionsList } from '../../components/QuestionsList';
+import { useLocalStorageState } from '../../utils/useLocalStorageState';
 
 export const DeletedQuestions = () => {
-  const [deleted, setDeleted] = useState([]);
-
-  useEffect(() => {
-    const storedDeleted = JSON.parse(localStorage.getItem('myDeleted')) || [];
-    setDeleted(storedDeleted);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('myDeleted', JSON.stringify(deleted));
-  }, [deleted]);
+  const [deleted, setDeleted] = useLocalStorageState('myDeleted', []);
 
   const handleRestore = (indexToRestore) => {
     const updatedDeleted = deleted.filter((_, index) => index !== indexToRestore);
@@ -22,7 +13,9 @@ export const DeletedQuestions = () => {
   return (
     <div className="container">
       <section className="question-trash">
+
         <h2 className="question-trash__heading">Smazané otázky</h2>
+
         <div className="question-trash__questions">
           <QuestionsList
             items={deleted}
@@ -32,6 +25,7 @@ export const DeletedQuestions = () => {
             classPrefix="deleted-questions"
           />
         </div>
+        
       </section>
     </div>
   );

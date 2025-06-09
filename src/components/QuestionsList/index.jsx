@@ -17,21 +17,24 @@ export const QuestionsList = ({
             <li
               key={index}
               className={classPrefix + '__item'}
-              onClick={() => onAction(index)} // Klik na celou kartu
+              onClick={() => onAction(index)}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') onAction(index);
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onAction(index);
+                }
               }}
               aria-label={`${ariaLabel}: ${item}`}
             >
               <button
                 onClick={(e) => {
-                  e.stopPropagation(); // zabrání spuštění onClick na li
+                  e.stopPropagation();
                   onAction(index);
                 }}
                 className={classPrefix + '__button'}
-                aria-label={ariaLabel}
+                aria-label={`${ariaLabel} ${item}`}
               >
                 <i className="fi fi-rr-cross-circle"></i>
               </button>

@@ -73,6 +73,7 @@ export const SpinBottleGame = () => {
 
   return (
     <div className="container">
+
       <section className="spin-bottle">
         <SpinBottleButtons
           hasSpun={hasSpun}
@@ -98,6 +99,7 @@ export const SpinBottleGame = () => {
             Roztočte flašku
           </button>
         </div>
+        
       </section>
 
       {showOverlay && (
