@@ -13,11 +13,11 @@ import {
 } from '../../utils/questionCardsUtils';
 
 export const QuestionCards = () => {
-  const [likedQuestions, setLikedQuestions] = useState(new Set());
-  const [dislikedQuestions, setDislikedQuestions] = useState(new Set());
   const { category } = useParams();
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [likedQuestions, setLikedQuestions] = useState(new Set());
+  const [dislikedQuestions, setDislikedQuestions] = useState(new Set());
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -54,58 +54,43 @@ export const QuestionCards = () => {
 
   const handleLikeFavorite = () => {
     if (!currentQuestion) return;
-    const favorites = getFavoriteQuestions();
-    let updated;
 
-    if (favorites.includes(currentQuestion)) {
-      updated = favorites.filter(q => q !== currentQuestion);
-      setLikedQuestions(prev => {
-        const newSet = new Set(prev);
-        newSet.delete(currentQuestion);
-        return newSet;
-      });
+    const newLiked = new Set(likedQuestions);
+    const newDisliked = new Set(dislikedQuestions);
+
+    if (newLiked.has(currentQuestion)) {
+      newLiked.delete(currentQuestion);
     } else {
-      updated = [...favorites, currentQuestion];
-      setLikedQuestions(prev => {
-        const newSet = new Set(prev);
-        newSet.add(currentQuestion);
-        return newSet;
-      });
-
-      if (dislikedQuestions.has(currentQuestion)) {
-        const newDisliked = new Set(dislikedQuestions);
+      newLiked.add(currentQuestion);
+      if (newDisliked.has(currentQuestion)) {
         newDisliked.delete(currentQuestion);
         setDislikedQuestions(newDisliked);
       }
     }
 
-    saveFavoriteQuestions(updated);
+    setLikedQuestions(newLiked);
+    saveFavoriteQuestions(Array.from(newLiked));
   };
 
   const handleDislike = () => {
     if (!currentQuestion) return;
 
-    const isDisliked = dislikedQuestions.has(currentQuestion);
     const newDisliked = new Set(dislikedQuestions);
+    const newLiked = new Set(likedQuestions);
 
-    if (isDisliked) {
+    if (newDisliked.has(currentQuestion)) {
       newDisliked.delete(currentQuestion);
     } else {
       newDisliked.add(currentQuestion);
-
-      if (likedQuestions.has(currentQuestion)) {
-        const newLiked = new Set(likedQuestions);
+      if (newLiked.has(currentQuestion)) {
         newLiked.delete(currentQuestion);
         setLikedQuestions(newLiked);
-
-        const favorites = getFavoriteQuestions();
-        const updated = favorites.filter(q => q !== currentQuestion);
-        saveFavoriteQuestions(updated);
+        saveFavoriteQuestions(Array.from(newLiked));
       }
+      addToDeleted(currentQuestion);
     }
 
     setDislikedQuestions(newDisliked);
-    addToDeleted(currentQuestion);
   };
 
   const categoryTitles = {
@@ -119,12 +104,14 @@ export const QuestionCards = () => {
 
   const isEmptyMessage = questions.length === 1 &&
     ['V této kategorii nejsou žádné otázky.', 'Nepodařilo se načíst otázky.'].includes(questions[0]?.text);
-
+  
   const progressPercent = questions.length > 0 ? ((currentIndex + 1) / questions.length) * 100 : 0;
 
   return (
     <div className="container fullwidth">
+
       <section className="question-cards">
+
         <h2 className="question-cards__heading">
           {categoryTitles[category] || 'Otázky'}
         </h2>
@@ -145,7 +132,6 @@ export const QuestionCards = () => {
             </div>
 
             <div className="question-card__buttons">
-
               <button
                 className="question-card__button question-card__button--like"
                 aria-label="To se mi líbí"
@@ -165,10 +151,10 @@ export const QuestionCards = () => {
                   ? "fi fi-sr-thumbs-down"
                   : "fi fi-rr-hand"}></i>
               </button>
-              
             </div>
           </>
         )}
+
       </section>
     </div>
   );
@@ -183,10 +169,8 @@ function CenterMode({ questions, onSlideChange }) {
     slidesToShow: 1,
     swipeToSlide: true,
     speed: 500,
-    beforeChange: (oldIndex, newIndex) => {
-      if (onSlideChange) {
-        onSlideChange(newIndex);
-      }
+    beforeChange: (_, newIndex) => {
+      if (onSlideChange) onSlideChange(newIndex);
     },
   };
 
