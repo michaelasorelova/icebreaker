@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MobileMenu } from "../MobileMenu";
+import { Menu } from "../Menu";
 import './style.css';
 
 export const Header = () => {
@@ -16,7 +16,7 @@ export const Header = () => {
       <nav className="main-nav">
         <a className="main-nav__brand" href="/">Icebreaker</a>
 
-        <MobileMenu isOpen={isMenuOpen} onClose={closeMenu} />
+        <Menu isOpen={isMenuOpen} onClose={closeMenu} />
 
         <button
           className="main-nav__toggle"
