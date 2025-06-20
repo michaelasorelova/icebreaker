@@ -22,8 +22,16 @@
   display: grid;
   gap: 0.625rem;
   grid-template-columns: 1fr 1fr;
+
 }
 
 .btn--full {
   grid-column: span 2;
+}
+
+@media (min-width: 1024px) {
+  .home__buttons {
+    max-width: 600px;
+    margin: 0 auto;
+  }
 }

@@ -44,3 +44,16 @@
   color: #D3D3D3;
   font-style: italic;
 }
+
+@media (min-width: 1024px) {
+  .deleted-questions__list,
+  .favorite-questions-list__list {
+    align-items: center;
+  }
+
+  .deleted-questions__item,
+  .favorite-questions-list__item {
+    width: 60%;
+    max-width: 600px;
+  }
+}
