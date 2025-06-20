@@ -13,7 +13,6 @@ export const Error = () => {
           <p>
             Stejně jako naděje, že vám Aneta ještě někdy odepíše.
           </p>
-          <i className="fi fi-sr-heart-crack"></i>
         </div>
 
       </section>

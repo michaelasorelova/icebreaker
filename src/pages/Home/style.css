@@ -29,7 +29,7 @@
   grid-column: span 2;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .home__buttons {
     max-width: 600px;
     margin: 0 auto;

@@ -32,7 +32,7 @@ export const QuestionCards = () => {
         const filtered = filterQuestions(allQuestions, getDeletedQuestions());
 
         if (filtered.length > 0) {
-          setQuestions(shuffleAndSlice(filtered, 25));
+          setQuestions(shuffleAndSlice(filtered, 10));
         } else {
           setQuestions([{ text: 'V této kategorii nejsou žádné otázky.' }]);
         }
@@ -104,14 +104,12 @@ export const QuestionCards = () => {
 
   const isEmptyMessage = questions.length === 1 &&
     ['V této kategorii nejsou žádné otázky.', 'Nepodařilo se načíst otázky.'].includes(questions[0]?.text);
-  
+
   const progressPercent = questions.length > 0 ? ((currentIndex + 1) / questions.length) * 100 : 0;
 
   return (
-    <div className="container fullwidth">
-
+    <div className="container">
       <section className="question-cards">
-
         <h2 className="question-cards__heading">
           {categoryTitles[category] || 'Otázky'}
         </h2>
@@ -154,24 +152,48 @@ export const QuestionCards = () => {
             </div>
           </>
         )}
-
       </section>
     </div>
   );
 };
 
+function NextArrow({ onClick }) {
+  return (
+    <div className="custom-arrow custom-arrow--next" onClick={onClick}>
+      <i class="fi fi-rr-angle-small-right"></i>
+    </div>
+  );
+}
+
+function PrevArrow({ onClick }) {
+  return (
+    <div className="custom-arrow custom-arrow--prev" onClick={onClick}>
+      <i class="fi fi-rr-angle-small-left"></i>
+    </div>
+  );
+}
+
 function CenterMode({ questions, onSlideChange }) {
   const settings = {
-    arrows: false,
     centerMode: true,
     infinite: false,
     centerPadding: "20px",
     slidesToShow: 1,
     swipeToSlide: true,
     speed: 500,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     beforeChange: (_, newIndex) => {
       if (onSlideChange) onSlideChange(newIndex);
     },
+    responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+      }
+    }
+  ]
   };
 
   return (

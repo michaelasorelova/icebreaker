@@ -45,7 +45,7 @@
   font-style: italic;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .deleted-questions__list,
   .favorite-questions-list__list {
     align-items: center;
@@ -55,5 +55,6 @@
   .favorite-questions-list__item {
     width: 60%;
     max-width: 600px;
+    cursor: pointer;
   }
 }

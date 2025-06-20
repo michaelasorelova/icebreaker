@@ -33,10 +33,6 @@ body.no-scroll {
   padding: 2rem 0;
 }
 
-.fullwidth {
-  max-width: 100%;
-}
-
 h2 {
   padding-bottom: 1.5rem;
   font-size: 2rem;
@@ -63,4 +59,10 @@ i {
   font-size: 1.25rem;
   font-weight: 700;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 1024px) {
+  .btn {
+    cursor: pointer;
+  }
 }
