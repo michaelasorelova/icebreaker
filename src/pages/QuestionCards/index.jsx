@@ -104,12 +104,14 @@ export const QuestionCards = () => {
 
   const isEmptyMessage = questions.length === 1 &&
     ['V této kategorii nejsou žádné otázky.', 'Nepodařilo se načíst otázky.'].includes(questions[0]?.text);
-
+  
   const progressPercent = questions.length > 0 ? ((currentIndex + 1) / questions.length) * 100 : 0;
 
   return (
     <div className="container">
+
       <section className="question-cards">
+
         <h2 className="question-cards__heading">
           {categoryTitles[category] || 'Otázky'}
         </h2>
@@ -129,9 +131,9 @@ export const QuestionCards = () => {
               />
             </div>
 
-            <div className="question-card__buttons">
+            <div className="question-cards__buttons">
               <button
-                className="question-card__button question-card__button--like"
+                className="question-cards__button question-cards__button--like"
                 aria-label="To se mi líbí"
                 onClick={handleLikeFavorite}
               >
@@ -141,7 +143,7 @@ export const QuestionCards = () => {
               </button>
 
               <button
-                className="question-card__button question-card__button--dislike"
+                className="question-cards__button question-cards__button--dislike"
                 aria-label="To se mi nelíbí"
                 onClick={handleDislike}
               >
@@ -152,26 +154,31 @@ export const QuestionCards = () => {
             </div>
           </>
         )}
+
       </section>
     </div>
   );
 };
 
-function NextArrow({ onClick }) {
-  return (
-    <div className="custom-arrow custom-arrow--next" onClick={onClick}>
-      <i class="fi fi-rr-angle-small-right"></i>
-    </div>
-  );
-}
+const NextArrow = ({ onClick }) => (
+  <button
+    className="custom-arrow right"
+    aria-label="Další otázka"
+    onClick={onClick}
+  >
+    <i className="fi fi-rr-angle-small-right" />
+  </button>
+);
 
-function PrevArrow({ onClick }) {
-  return (
-    <div className="custom-arrow custom-arrow--prev" onClick={onClick}>
-      <i class="fi fi-rr-angle-small-left"></i>
-    </div>
-  );
-}
+const PrevArrow = ({ onClick }) => (
+  <button
+    className="custom-arrow left"
+    aria-label="Předchozí otázka"
+    onClick={onClick}
+  >
+    <i className="fi fi-rr-angle-small-left" />
+  </button>
+);
 
 function CenterMode({ questions, onSlideChange }) {
   const settings = {
@@ -186,14 +193,6 @@ function CenterMode({ questions, onSlideChange }) {
     beforeChange: (_, newIndex) => {
       if (onSlideChange) onSlideChange(newIndex);
     },
-    responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        arrows: false,
-      }
-    }
-  ]
   };
 
   return (

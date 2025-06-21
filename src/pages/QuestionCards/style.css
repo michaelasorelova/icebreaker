@@ -4,7 +4,7 @@
   font-style: italic;
 }
 
-.question-card__buttons {
+.question-cards__buttons {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,7 +12,7 @@
   margin-top: 1rem;
 }
 
-.question-card__button {
+.question-cards__button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,18 +20,19 @@
   width: 64px;
   border: none;
   border-radius: 50%;
+  cursor: pointer;
 }
 
-.question-card__button i {
+.question-cards__button i {
   font-size: 2.5rem;
 }
 
-.question-card__button--dislike {
+.question-cards__button--dislike {
   color: #950606;
   background-color: #FF474C;
 }
 
-.question-card__button--like {
+.question-cards__button--like {
   color: #06402B;
   background-color: #90EE90;
 }
@@ -52,38 +53,40 @@
   transition: width 0.4s ease-in-out;
 }
 
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  background: transparent;
+  border: none;
+  color: #FFF;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.custom-arrow i {
+  font-size: 2.5rem;
+}
+
+.custom-arrow.left {
+  left: 10px;
+}
+
+.custom-arrow.right {
+  right: 10px;
+}
+
+.slick-prev {
+  left: 10px;
+}
+.slick-next {
+  right: 10px;
+}
+
 @media (min-width: 768px) {
   .question-cards {
     width: 60%;
     max-width: 600px;
     margin: 0 auto;
   }
-}
-
-.slick-prev,
-.slick-next {
-  z-index: 1;
-  width: 40px;
-  height: 40px;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
-}
-
-.custom-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  cursor: pointer;
-  font-size: 2.5rem;
-  color: #FFF;
-}
-
-.custom-arrow--next {
-  right: -50px;
-}
-
-.custom-arrow--prev {
-  left: -50px;
 }

@@ -12,5 +12,11 @@
 
 .question-card__content p {
   color: #000;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .question-card__content {
+    cursor: pointer;
+  }
 }
