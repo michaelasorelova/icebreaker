@@ -4,7 +4,7 @@
   justify-content: center;
   aspect-ratio: 1 / 1;
   margin: 0 0.625rem;
-  padding: 0 0.625rem;
+  padding: 0 1.25rem;
   background-color: #A8DADC;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -12,7 +12,7 @@
 
 .question-card__content p {
   color: #000;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 }
 
 @media (min-width: 768px) {
