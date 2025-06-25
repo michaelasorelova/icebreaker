@@ -81,4 +81,8 @@
   .main-nav__toggle {
     display: none;
   }
+
+  .menu__link--active {
+    text-decoration: underline;
+  }
 }
