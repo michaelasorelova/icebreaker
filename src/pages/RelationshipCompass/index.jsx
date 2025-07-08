@@ -56,10 +56,10 @@ export const RelationshipCompass = () => {
   const answerOptions =
     mode === 'duo'
       ? [
-          { value: 'strong-agree', label: 'Shodli jsme se.' },
-          { value: 'weak-agree', label: 'Spíše jsme se shodli.' },
-          { value: 'weak-disagree', label: 'Spíše jsme se neshodli.' },
-          { value: 'strong-disagree', label: 'Neshodli jsme se.' },
+          { value: 'strong-agree', label: 'Shodujeme se.' },
+          { value: 'weak-agree', label: 'Spíše se shodujeme.' },
+          { value: 'weak-disagree', label: 'Spíše se neshodujeme.' },
+          { value: 'strong-disagree', label: 'Neshodujeme se.' },
         ]
       : [
           { value: 'important', label: 'Je to pro mě důležité.' },
@@ -249,82 +249,124 @@ export const RelationshipCompass = () => {
               <div className="relationship-compass__results">
                 {mode === 'duo' ? (
                   <>
-                    <div className="relationship-compass__result">
-                      <p>Shodli jste se u {getResultCounts().agree} otázek:</p>
-                      <ul className="relationship-compass__list">
-                        {questionsToPlay
-                          .filter(
-                            (q) =>
-                              answers[q.id] === 'strong-agree' ||
-                              answers[q.id] === 'weak-agree'
-                          )
-                          .map((q) => (
-                            <li className="relationship-compass__item" key={q.id}>
-                              {q.text}
-                            </li>
-                          ))}
-                      </ul>
-                    </div>
-                    <div className="relationship-compass__result">
-                      <p>Neshodli jste se u {getResultCounts().disagree} otázek:</p>
-                      <ul className="relationship-compass__list">
-                        {questionsToPlay
-                          .filter(
-                            (q) =>
-                              answers[q.id] === 'strong-disagree' ||
-                              answers[q.id] === 'weak-disagree'
-                          )
-                          .map((q) => (
-                            <li className="relationship-compass__item" key={q.id}>
-                              {q.text}
-                            </li>
-                          ))}
-                      </ul>
-                    </div>
+                    {getResultCounts().agree > 0 ? (
+                      <div className="relationship-compass__result">
+                        <p>
+                          {getResultCounts().agree === 1
+                            ? 'Shodujete se u 1 otázky:'
+                            : `Shodujete se u ${getResultCounts().agree} otázek:`}
+                        </p>
+                        <ul className="relationship-compass__list">
+                          {questionsToPlay
+                            .filter(
+                              (q) =>
+                                answers[q.id] === 'strong-agree' ||
+                                answers[q.id] === 'weak-agree'
+                            )
+                            .map((q) => (
+                              <li className="relationship-compass__item" key={q.id}>
+                                {q.text}
+                              </li>
+                            ))}
+                        </ul>
+                      </div>
+                    ) : (
+                      <p>Neshodujete se u žádné otázky.</p>
+                    )}
+
+                    {getResultCounts().disagree > 0 ? (
+                      <div className="relationship-compass__result">
+                        <p>
+                          {getResultCounts().disagree === 1
+                            ? 'Neshodujete se u 1 otázky:'
+                            : `Neshodujete se u ${getResultCounts().disagree} otázek:`}
+                        </p>
+                        <ul className="relationship-compass__list">
+                          {questionsToPlay
+                            .filter(
+                              (q) =>
+                                answers[q.id] === 'strong-disagree' ||
+                                answers[q.id] === 'weak-disagree'
+                            )
+                            .map((q) => (
+                              <li className="relationship-compass__item" key={q.id}>
+                                {q.text}
+                              </li>
+                            ))}
+                        </ul>
+                      </div>
+                    ) : (
+                      <p>Shodujete se u všech otázek.</p>
+                    )}
                   </>
                 ) : (
                   <>
-                    <div className="relationship-compass__result">
-                      <p>Důležité pro vás bylo {getResultCounts().important} témat:</p>
-                      <ul className="relationship-compass__list">
-                        {questionsToPlay
-                          .filter(
-                            (q) =>
-                              answers[q.id] === 'important' ||
-                              answers[q.id] === 'rather-important'
-                          )
-                          .map((q) => (
-                            <li className="relationship-compass__item" key={q.id}>
-                              {q.text}
-                            </li>
-                          ))}
-                      </ul>
-                    </div>
-                    <div className="relationship-compass__result">
-                      <p>Nebylo důležité {getResultCounts().notImportant} témat:</p>
-                      <ul className="relationship-compass__list">
-                        {questionsToPlay
-                          .filter(
-                            (q) =>
-                              answers[q.id] === 'rather-not-important' ||
-                              answers[q.id] === 'not-important'
-                          )
-                          .map((q) => (
-                            <li className="relationship-compass__item" key={q.id}>
-                              {q.text}
-                            </li>
-                          ))}
-                      </ul>
-                    </div>
+                    {getResultCounts().important > 0 ? (
+                      <div className="relationship-compass__result">
+                        <p>
+                          {getResultCounts().important === 1
+                            ? '1 otázka je pro vás důležitá:'
+                            : (getResultCounts().important >= 2 && getResultCounts().important <= 4)
+                              ? `${getResultCounts().important} otázky jsou pro vás důležité:`
+                              : `${getResultCounts().important} otázek je pro vás důležitých:`}
+                        </p>
+                        <ul className="relationship-compass__list">
+                          {questionsToPlay
+                            .filter(
+                              (q) =>
+                                answers[q.id] === 'important' ||
+                                answers[q.id] === 'rather-important'
+                            )
+                            .map((q) => (
+                              <li className="relationship-compass__item" key={q.id}>
+                                {q.text}
+                              </li>
+                            ))}
+                        </ul>
+                      </div>
+                    ) : (
+                      <p>Žádnou otázku jste neoznačili jako důležitou.</p>
+                    )}
+
+                    {getResultCounts().notImportant > 0 ? (
+                      <div className="relationship-compass__result">
+                        <p>
+                          {getResultCounts().notImportant === 1
+                            ? '1 otázka pro vás není důležitá:'
+                            : (getResultCounts().notImportant >= 2 && getResultCounts().notImportant <= 4)
+                              ? `${getResultCounts().notImportant} otázky pro vás nejsou důležité:`
+                              : `${getResultCounts().notImportant} otázek pro vás není důležitých:`}
+                        </p>
+                        <ul className="relationship-compass__list">
+                          {questionsToPlay
+                            .filter(
+                              (q) =>
+                                answers[q.id] === 'rather-not-important' ||
+                                answers[q.id] === 'not-important'
+                            )
+                            .map((q) => (
+                              <li className="relationship-compass__item" key={q.id}>
+                                {q.text}
+                              </li>
+                            ))}
+                        </ul>
+                      </div>
+                    ) : (
+                      <p>Všechny otázky jste označili jako důležité.</p>
+                    )}
                   </>
                 )}
-                <button type="button" className="btn" onClick={handleRestart}>
-                  Hrát znovu
-                </button>
+
+                <div className="relationship-compass__actions">
+                  <button className="btn" onClick={handleRestart}>
+                    Hrát znovu
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         )}
+
       </section>
     </div>
   );

@@ -60,6 +60,7 @@
 }
 
 .relationship-compass__list {
+  list-style: none;
   text-align: left;
   font-size: 1rem;
   display: flex;
