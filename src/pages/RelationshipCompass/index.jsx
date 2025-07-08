@@ -169,8 +169,8 @@ export const RelationshipCompass = () => {
                   <i
                     className={
                       selectedCategories.length === allCategories.length && allCategories.length > 0
-                        ? 'fi fi-sr-checkbox'
-                        : 'fi fi-rr-checkbox'
+                        ? 'fi fi-rr-checkbox'
+                        : 'fi fi-rr-square'
                     }
                   />
                   Vše
@@ -187,7 +187,7 @@ export const RelationshipCompass = () => {
                     />
                     <i
                       className={
-                        selectedCategories.includes(cat.id) ? 'fi fi-sr-checkbox' : 'fi fi-rr-checkbox'
+                        selectedCategories.includes(cat.id) ? 'fi fi-rr-checkbox' : 'fi fi-rr-square'
                       }
                     />
                     {cat.name} ({cat.questions.length})
