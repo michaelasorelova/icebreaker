@@ -112,10 +112,10 @@ export const RelationshipCompass = () => {
           <div className="relationship-compass__step relationship-compass__step--1">
             <div className="relationship-compass__text">
               <p>
-                Tahle hra není o tom odpovědět správně. Jde o to, jestli se shodnete, nebo ne.
+                Tahle hra nemá správné nebo špatné odpovědi. Jde hlavně o to, jestli se s druhým shodnete, nebo ne.
               </p>
               <p>
-                Zamyslete se, co od vztahu očekáváte, a pokračujte dál.
+                Když hrajete sami, berte to jako příležitost zamyslet se nad tím, co od vztahu chcete a co je pro vás důležité.
               </p>
             </div>
             <button className="btn" onClick={() => setStep(2)}>
@@ -127,20 +127,8 @@ export const RelationshipCompass = () => {
         {step === 2 && (
           <div className="relationship-compass__step relationship-compass__step--2">
             <div className="relationship-compass__mode-select">
-              <h3 className="relationship-compass__subheading">Chcete hrát sami, nebo ve dvou?</h3>
+              <h3 className="relationship-compass__subheading">Chcete hrát ve dvou, nebo sami?</h3>
               <div className="relationship-compass__options">
-                <label className="relationship-compass__option">
-                  <input
-                    className="relationship-compass__radio"
-                    type="radio"
-                    name="mode"
-                    value="solo"
-                    checked={mode === 'solo'}
-                    onChange={() => setMode('solo')}
-                  />
-                  <i className={mode === 'solo' ? 'fi fi-rr-dot-circle' : 'fi fi-rr-circle'} />
-                  Sami
-                </label>
                 <label className="relationship-compass__option">
                   <input
                     className="relationship-compass__radio"
@@ -152,6 +140,18 @@ export const RelationshipCompass = () => {
                   />
                   <i className={mode === 'duo' ? 'fi fi-rr-dot-circle' : 'fi fi-rr-circle'} />
                   Ve dvou
+                </label>
+                <label className="relationship-compass__option">
+                  <input
+                    className="relationship-compass__radio"
+                    type="radio"
+                    name="mode"
+                    value="solo"
+                    checked={mode === 'solo'}
+                    onChange={() => setMode('solo')}
+                  />
+                  <i className={mode === 'solo' ? 'fi fi-rr-dot-circle' : 'fi fi-rr-circle'} />
+                  Sami
                 </label>
               </div>
             </div>
