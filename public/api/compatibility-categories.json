@@ -3,14 +3,15 @@
     "id": "household",
     "name": "Domácnost",
     "questions": [
-      { "id": "household_1", "text": "Jak by podle vás mělo vypadat rozdělení starosti o domácnost mezi partnery?" },
-      { "id": "household_2", "text": "Mělo by se rozdělení povinností v domácnosti měnit podle období (děti, nemoc, práce)?" },
-      { "id": "household_4", "text": "Kdo by se v domácnosti měl starat o to, co je potřeba koupit?" },
-      { "id": "household_3", "text": "Připravujete si obědy doma, nebo je kupujete hotové?" },
-      { "id": "household_6", "text": "Jak byste řešili rozdílné představy o uklizené domácnosti mezi partnery?" },
-      { "id": "household_8", "text": "Jak často by se podle vás měla domácnost uklízet?" },
-      { "id": "household_7", "text": "Máte nějaké pravidla ohledně návštěv?" },
-      { "id": "household_5", "text": "Bydleli jste někdy sami?" }
+      { "id": "household_1", "text": "Kdy je ten správný čas se k sobě nastěhovat?" },
+      { "id": "household_2", "text": "Bydleli jste někdy sami?" },
+      { "id": "household_3", "text": "Jak by podle vás mělo vypadat rozdělení starosti o domácnost mezi partnery?" },
+      { "id": "household_4", "text": "Mělo by se rozdělení povinností v domácnosti měnit podle období (děti, nemoc, práce)?" },
+      { "id": "household_5", "text": "Kdo by se v domácnosti měl starat o to, co je potřeba koupit?" },
+      { "id": "household_6", "text": "Připravujete si obědy doma, nebo je kupujete hotové?" },
+      { "id": "household_7", "text": "Máte nějaká pravidla ohledně návštěv?" },
+      { "id": "household_8", "text": "Jak byste řešili rozdílné představy o uklizené domácnosti mezi partnery?" },
+      { "id": "household_9", "text": "Jak často by se podle vás měla domácnost uklízet?" }
     ]
   },
   {
@@ -103,21 +104,24 @@
     "id": "relationship",
     "name": "Vztah",
     "questions": [
-      {"id": "relationship_1", "text": "Jak důležité je pro vás mít vlastní život mimo vztah (přátelé, koníčky, čas pro sebe)?"},
-      {"id": "relationship_2", "text": "Jaký máte názor na přátelství s lidmi opačného pohlaví?"},
-      {"id": "relationship_3", "text": "Je pro vás důležité, aby partner byl zároveň váš nejlepší přítel?"},
-      {"id": "relationship_4", "text": "Jaký názor máte na žárlivost – důkaz lásky, nebo nedůvěry?"},
-      {"id": "relationship_5", "text": "Vadilo by vám, kdyby váš partner zůstával v kontaktu s ex?"},
-      {"id": "relationship_6", "text": "Je podle vás v pořádku vídat se s jinými lidmi během randění, dokud vztah není „oficiální“?"},
-      {"id": "relationship_7", "text": "Co pro vás znamená nevěra?"},
-      {"id": "relationship_8", "text": "Jaký máte názor na sdílení hesel nebo polohy – důkaz důvěry, nebo zásah do soukromí?"},
-      {"id": "relationship_9", "text": "Kde je pro vás hranice mezi upřímností a zraňující kritikou?"},
-      {"id": "relationship_10", "text": "Dokážete se omluvit, když víte, že jste udělali chybu?"},
-      {"id": "relationship_11", "text": "Jak zvládáte stres a těžká období?"},
-      {"id": "relationship_12", "text": "Měli by partneři stát při sobě, i když jeden udělá něco špatného?"},
-      {"id": "relationship_13", "text": "Chodili jste někdy na terapii? Přemýšleli jste o ní?"},
-      {"id": "relationship_14", "text": "Jaké máte vztahy se svou rodinou? Je pro vás důležité se s ní pravidelně vídat?"},
-      {"id": "relationship_15", "text": "Kdy je ten správný čas se k sobě nastěhovat?"}
+      {"id": "relationship_1", "text": "Věříte na lásku na první pohled nebo na osudovou lásku?"},
+      {"id": "relationship_2", "text": "Je pro vás důležité, aby partner byl zároveň váš nejlepší přítel?"},
+      {"id": "relationship_3", "text": "Jak důležité je pro vás mít vlastní život mimo vztah (přátelé, koníčky, čas pro sebe)?"},
+      {"id": "relationship_4", "text": "Jaký máte názor na přátelství s lidmi opačného pohlaví?"},
+      {"id": "relationship_5", "text": "Je podle vás v pořádku vídat se s jinými lidmi během randění, dokud vztah není „oficiální“?"},
+      {"id": "relationship_6", "text": "Vadilo by vám, kdyby váš partner zůstával v kontaktu s ex?"},
+      {"id": "relationship_7", "text": "Jaký názor máte na žárlivost – důkaz lásky, nebo nedůvěry?"},
+      {"id": "relationship_8", "text": "Co pro vás znamená nevěra?"},
+      {"id": "relationship_9", "text": "Jaký máte názor na sdílení hesel nebo polohy – důkaz důvěry, nebo zásah do soukromí?"},
+      {"id": "relationship_10", "text": "Jak nejraději projevujete lásku a jak ji naopak rádi přijímáte – fyzickým dotykem, slovy ujištění, dárky, pomocí nebo společně stráveným časem?"},
+      {"id": "relationship_11", "text": "Jak podle vás vypadá zdravá komunikace mezi partnery?"},
+      {"id": "relationship_12", "text": "Kde je pro vás hranice mezi upřímností a zraňující kritikou?"},
+      {"id": "relationship_13", "text": "Dokážete se omluvit, když víte, že jste udělali chybu?"},
+      {"id": "relationship_14", "text": "Jak zvládáte stres a těžká období?"},
+      {"id": "relationship_15", "text": "Měli by partneři stát při sobě, i když jeden udělá něco špatného?"},
+      {"id": "relationship_16", "text": "Chodili jste někdy na terapii? Přemýšleli jste o ní?"},
+      {"id": "relationship_17", "text": "Jaký máte názor na vztah na dálku?"},
+      {"id": "relationship_18", "text": "Jaké máte vztahy se svou rodinou? Je pro vás důležité se s ní pravidelně vídat?"}
     ]
   },
   {
