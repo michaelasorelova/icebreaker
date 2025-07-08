@@ -29,33 +29,43 @@ export const Home = () => {
           alt="Kostka ledu"
         />
 
-        <div className="home__options">
+        <div>
           <h3 className="home__subheading">Jak chcete začít?</h3>
-          <div className="home__buttons">
-            <button className="btn" onClick={() => handleNavigate('na_rozehrati')}>
-              Na rozehřátí
-            </button>
-            <button className="btn" onClick={() => handleNavigate('na_pobaveni')}>
-              Na pobavení
-            </button>
-            <button className="btn" onClick={() => handleNavigate('co_by_kdyby')}>
-              Co by kdyby
-            </button>
-            <button className="btn" onClick={() => handleNavigate('na_telo')}>
-              Na tělo
-            </button>
-            <button className="btn" onClick={() => handleNavigate('do_hloubky')}>
-              Do hloubky
-            </button>
-            <button className="btn" onClick={() => handleNavigate('mix_vseho')}>
-              Mix všeho
-            </button>
-            <button className="btn btn--full" onClick={() => navigate('/spin-bottle-game')}>
-              Pravda nebo úkol
-            </button>
-            <button className="btn btn--full" onClick={() => navigate('/relationship-compass')}>
-              Vztahový kompas
-            </button>
+          <div className="home__options">
+            <div className="home__option">
+              <p>Karty s otázkami</p>
+              <div className="home__buttons">
+                <button className="btn" onClick={() => handleNavigate('na_rozehrati')}>
+                  Na rozehřátí
+                </button>
+                <button className="btn" onClick={() => handleNavigate('na_pobaveni')}>
+                  Na pobavení
+                </button>
+                <button className="btn" onClick={() => handleNavigate('co_by_kdyby')}>
+                  Co by kdyby
+                </button>
+                <button className="btn" onClick={() => handleNavigate('na_telo')}>
+                  Na tělo
+                </button>
+                <button className="btn" onClick={() => handleNavigate('do_hloubky')}>
+                  Do hloubky
+                </button>
+                <button className="btn" onClick={() => handleNavigate('mix_vseho')}>
+                  Mix všeho
+                </button>
+              </div>
+            </div>
+            <div className="home__option">
+              <p>Mini hry</p>
+              <div className="home__buttons">
+                <button className="btn btn--full" onClick={() => navigate('/spin-bottle-game')}>
+                  Pravda nebo úkol
+                </button>
+                <button className="btn btn--full" onClick={() => navigate('/relationship-compass')}>
+                  Vztahový kompas
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 

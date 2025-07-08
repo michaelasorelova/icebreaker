@@ -19,6 +19,18 @@
   grid-template-columns: 1fr 1fr;
 }
 
+.home__options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.home__option {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .btn--full {
   grid-column: span 2;
 }
