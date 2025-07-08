@@ -31,12 +31,15 @@
   gap: 1rem;
 }
 
-.btn--full {
-  grid-column: span 2;
+.home__option:nth-child(2) .home__buttons {
+  display: grid;
+  gap: 0.625rem;
+  grid-template-columns: 1fr;
 }
 
 @media (min-width: 768px) {
   .home__buttons {
+    width: 100%;
     max-width: 600px;
     margin: 0 auto;
   }
