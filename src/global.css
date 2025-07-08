@@ -70,4 +70,8 @@ i {
   .btn {
     cursor: pointer;
   }
+
+  .lbl {
+    cursor: pointer;
+  }
 }

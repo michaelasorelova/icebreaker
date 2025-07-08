@@ -129,7 +129,7 @@ export const RelationshipCompass = () => {
             <div className="relationship-compass__mode-select">
               <h3 className="relationship-compass__subheading">Chcete hrát ve dvou, nebo sami?</h3>
               <div className="relationship-compass__options">
-                <label className="relationship-compass__option">
+                <label className="lbl relationship-compass__option">
                   <input
                     className="relationship-compass__radio"
                     type="radio"
@@ -141,7 +141,7 @@ export const RelationshipCompass = () => {
                   <i className={mode === 'duo' ? 'fi fi-rr-dot-circle' : 'fi fi-rr-circle'} />
                   Ve dvou
                 </label>
-                <label className="relationship-compass__option">
+                <label className="lbl relationship-compass__option">
                   <input
                     className="relationship-compass__radio"
                     type="radio"
@@ -159,7 +159,7 @@ export const RelationshipCompass = () => {
             <div className="relationship-compass__category-select">
               <h3 className="relationship-compass__subheading">Vyberte kategorie otázek</h3>
               <div className="relationship-compass__options">
-                <label className="relationship-compass__option">
+                <label className="lbl relationship-compass__option">
                   <input
                     className="relationship-compass__checkbox"
                     type="checkbox"
@@ -177,7 +177,7 @@ export const RelationshipCompass = () => {
                 </label>
 
                 {allCategories.map((cat) => (
-                  <label className="relationship-compass__option" key={cat.id}>
+                  <label className="lbl relationship-compass__option" key={cat.id}>
                     <input
                       className="relationship-compass__checkbox"
                       type="checkbox"
@@ -205,7 +205,7 @@ export const RelationshipCompass = () => {
                       <p>{question.text}</p>
                       <div className="relationship-compass__options">
                         {answerOptions.map(({ value, label }) => (
-                          <label key={value} className="relationship-compass__option">
+                          <label key={value} className="lbl relationship-compass__option">
                             <input
                               className="relationship-compass__radio"
                               type="radio"
