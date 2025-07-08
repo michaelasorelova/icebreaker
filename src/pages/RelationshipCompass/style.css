@@ -1,0 +1,81 @@
+.relationship-compass__step {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.relationship-compass__text p:first-child {
+  padding-bottom: 1rem;
+}
+
+.relationship-compass__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.relationship-compass__option {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.750rem;
+  position: relative;
+  user-select: none;
+}
+
+.relationship-compass__checkbox,
+.relationship-compass__radio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.relationship-compass__option i {
+  font-size: 1.25rem;
+  color: #FFF;
+}
+
+.relationship-compass__buttons {
+  display: grid;
+  gap: 0.625rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.relationship-compass__questions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.relationship-compass__question {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.relationship-compass__list {
+  list-style: none;
+  text-align: left;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.750rem;
+}
+
+.relationship-compass__results {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.relationship-compass__result {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

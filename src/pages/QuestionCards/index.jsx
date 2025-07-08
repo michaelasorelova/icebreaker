@@ -1,8 +1,7 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom'; 
 import { useEffect, useState } from 'react';
-import { QuestionCard } from '../../components/QuestionCard';
+import { QuestionSlider } from '../../components/QuestionSlider';
 import './style.css';
-import Slider from "react-slick";
 import {
   getDeletedQuestions,
   getFavoriteQuestions,
@@ -22,7 +21,7 @@ export const QuestionCards = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await fetch('/api/question_categories.json');
+        const response = await fetch('/api/question-categories.json');
         const json = await response.json();
 
         let allQuestions = category === 'mix_vseho'
@@ -121,7 +120,7 @@ export const QuestionCards = () => {
         ) : (
           <>
             <div className="question-cards__track">
-              <CenterMode questions={questions} onSlideChange={setCurrentIndex} />
+              <QuestionSlider questions={questions} onSlideChange={setCurrentIndex} />
             </div>
 
             <div className="custom-progress-bar">
@@ -159,49 +158,3 @@ export const QuestionCards = () => {
     </div>
   );
 };
-
-const NextArrow = ({ onClick }) => (
-  <button
-    className="custom-arrow right"
-    aria-label="Další otázka"
-    onClick={onClick}
-  >
-    <i className="fi fi-rr-angle-small-right" />
-  </button>
-);
-
-const PrevArrow = ({ onClick }) => (
-  <button
-    className="custom-arrow left"
-    aria-label="Předchozí otázka"
-    onClick={onClick}
-  >
-    <i className="fi fi-rr-angle-small-left" />
-  </button>
-);
-
-function CenterMode({ questions, onSlideChange }) {
-  const settings = {
-    centerMode: true,
-    infinite: false,
-    centerPadding: "20px",
-    slidesToShow: 1,
-    swipeToSlide: true,
-    speed: 500,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    beforeChange: (_, newIndex) => {
-      if (onSlideChange) onSlideChange(newIndex);
-    },
-  };
-
-  return (
-    <div className="slider-container">
-      <Slider {...settings}>
-        {questions.map((question, index) => (
-          <QuestionCard key={index} question={question.text} />
-        ))}
-      </Slider>
-    </div>
-  );
-}

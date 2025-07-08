@@ -13,16 +13,10 @@
   margin: 0 auto;
 }
 
-.home__heading {
-  padding-bottom: 1rem;
-  font-size: 1.5rem;
-}
-
 .home__buttons {
   display: grid;
   gap: 0.625rem;
   grid-template-columns: 1fr 1fr;
-
 }
 
 .btn--full {

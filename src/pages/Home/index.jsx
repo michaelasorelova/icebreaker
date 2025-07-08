@@ -30,7 +30,7 @@ export const Home = () => {
         />
 
         <div className="home__options">
-          <h3 className="home__heading">Jak chcete začít?</h3>
+          <h3 className="home__subheading">Jak chcete začít?</h3>
           <div className="home__buttons">
             <button className="btn" onClick={() => handleNavigate('na_rozehrati')}>
               Na rozehřátí
@@ -52,6 +52,9 @@ export const Home = () => {
             </button>
             <button className="btn btn--full" onClick={() => navigate('/spin-bottle-game')}>
               Pravda nebo úkol
+            </button>
+            <button className="btn btn--full" onClick={() => navigate('/relationship-compass')}>
+              Vztahový kompas
             </button>
           </div>
         </div>

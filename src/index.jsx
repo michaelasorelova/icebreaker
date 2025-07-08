@@ -16,6 +16,7 @@ import { FavoriteQuestions } from './pages/FavoriteQuestions';
 import { DeletedQuestions } from './pages/DeletedQuestions';
 import { QuestionCards } from './pages/QuestionCards';
 import { SpinBottleGame } from './pages/SpinBottleGame';
+import { RelationshipCompass } from './pages/RelationshipCompass';
 import { Error } from "./pages/Error";
 import { Contact } from "./pages/Contact";
 
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: 'question-cards/:category', element: <QuestionCards /> },
       { path: 'spin-bottle-game', element: <SpinBottleGame /> },
+      { path: 'relationship-compass', element: <RelationshipCompass /> },
       { path: 'favorite-questions', element: <FavoriteQuestions /> },
       { path: 'deleted-questions', element: <DeletedQuestions /> },
       { path: 'about', element: <About /> },

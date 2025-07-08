@@ -1,104 +1,136 @@
-{
-  "household": [
-    { "id": "household_1", "text": "Jak by podle vás mělo vypadat rozdělení starosti o domácnost mezi partnery?" },
-    { "id": "household_2", "text": "Mělo by se rozdělení povinností v domácnosti měnit podle období (děti, nemoc, práce)?" },
-    { "id": "household_4", "text": "Kdo by se v domácnosti měl starat o to, co je potřeba koupit?" },
-    { "id": "household_3", "text": "Připravujete si obědy doma, nebo je kupujete hotové?" },
-    { "id": "household_6", "text": "Jak byste řešili rozdílné představy o uklizené domácnosti mezi partnery?" },
-    { "id": "household_8", "text": "Jak často by se podle vás měla domácnost uklízet?" },
-    { "id": "household_7", "text": "Máte nějaké pravidla ohledně návštěv?" },
-    { "id": "household_5", "text": "Bydleli jste někdy sami?" }
-  ],
-  "finance": [
-    { "id": "finance_1", "text": "Jaký máte vztah k penězům? Šetříte, nebo utrácíte?" },
-    { "id": "finance_2", "text": "Za co nejčastěji utrácíte?" },
-    { "id": "finance_3", "text": "Investujete (např. do akcií, kryptoměn nebo nemovitostí)?" },
-    { "id": "finance_4", "text": "Máte nějaké dluhy? Stresují vás, nebo je berete jako běžnou součást života?" },
-    { "id": "finance_5", "text": "Půjčili byste peníze svým blízkým? Za jakých podmínek?" },
-    { "id": "finance_6", "text": "Jak si představujete rozdělení výdajů ve vztahu?" },
-    { "id": "finance_7", "text": "Jak byste řešili rozdílné příjmy ve vztahu (např. při dovolené nebo společných nákupech)?" },
-    { "id": "finance_8", "text": "Co si myslíte o společném bankovním účtu?" },
-    { "id": "finance_9", "text": "Je pro vás důležitá finanční nezávislost na partnerovi?" },
-    { "id": "finance_10", "text": "Sledujete pravidelně své výdaje?" },
-    { "id": "finance_11", "text": "Jak důležitá je pro vás finanční transparentnost ve vztahu?" },
-    { "id": "finance_12", "text": "Jak se stavíte k pomoci druhým?" },
-    { "id": "finance_13", "text": "Jak byste se cítili, kdybyste museli partnera živit, nebo naopak?" },
-    { "id": "finance_14", "text": "Kdo by podle vás měl řešit daně, investice, větší nákupy? Sdílená zodpovědnost, nebo jeden z vás?" }
-  ],
-  "general-knowledge": [
-    { "id": "general_1", "text": "Zajímá vás dění ve světě?" },
-    { "id": "general_2", "text": "Kolik podle vás existuje pohlaví?" },
-    { "id": "general_3", "text": "Co si myslíte o feminismu? Identifikujete se s ním?" },
-    { "id": "general_4", "text": "Měli by stejnopohlavní páry mít možnost uzavřít manželství?" },
-    { "id": "general_5", "text": "Může být člověk, který prošel tranzicí, šťastnější?" },
-    { "id": "general_6", "text": "Měly by pojišťovny proplácet tranzici?" },
-    { "id": "general_7", "text": "Je deprese jen „špatná nálada“?" },
-    { "id": "general_8", "text": "Dokázali byste být s někým, kdo má opačný názor na očkování, migraci nebo klima?" },
-    { "id": "general_9", "text": "Koho volíte a proč (nebo co je pro vás při volbách důležité)?" },
-    { "id": "general_10", "text": "Může si někdy oběť za znásilnění sama?" }
-  ],
-  "intimity": [
-    { "id": "intimity_1", "text": "Jak si představujete ideální sexuální život? (atmosféra, frekvence, iniciace, role…)" },
-    { "id": "intimity_2", "text": "Umíte svému partnerovi říct, co se vám v sexu líbí a co ne?" },
-    { "id": "intimity_3", "text": "Co je pro vás v sexu nepřijatelné?" },
-    { "id": "intimity_4", "text": "Co v sexu naopak potřebujete, abyste byli spokojení?" },
-    { "id": "intimity_5", "text": "Myslíte si, že sex ve vztahu by měl být povinností, i když partner nemá chuť?" },
-    { "id": "intimity_6", "text": "Vadí vám, když partner sleduje porno?" },
-    { "id": "intimity_7", "text": "Umíte si představit otevřený nebo polyamorní vztah? Jaký na to máte názor?" },
-    { "id": "intimity_8", "text": "Jaké jsou vaše sexuální fantazie nebo touhy? Je pro vás snadné o nich mluvit?" }
-  ],
-  "parenting": [
-    { "id": "parenting_1", "text": "Chcete v budoucnu děti?" },
-    { "id": "parenting_2", "text": "Co vás na představě rodičovství láká a co vás naopak děsí?" },
-    { "id": "parenting_3", "text": "Kolik dětí byste si přáli mít?" },
-    { "id": "parenting_4", "text": "Kdy je podle vás ten správný čas na dítě?" },
-    { "id": "parenting_5", "text": "Umíte si představit, že byste pečovali o dítě s postižením?" },
-    { "id": "parenting_6", "text": "Pokud by váš partner nemohl mít děti, zvažovali byste adopci, umělé oplodnění nebo jiné alternativy?" },
-    { "id": "parenting_7", "text": "Jak by podle vás mělo vypadat rozdělení péče o děti mezi rodiči?" },
-    { "id": "parenting_8", "text": "Myslíte si, že by se partneři měli střídat na rodičovské dovolené?" },
-    { "id": "parenting_9", "text": "Co byste chtěli svým dětem předat?" },
-    { "id": "parenting_10", "text": "Jak vás ovlivnilo vlastní dětství v tom, jak chcete nebo nechcete vychovávat své děti?" },
-    { "id": "parenting_11", "text": "Jaký je váš názor na fyzické tresty u dětí?" },
-    { "id": "parenting_12", "text": "Je podle vás v pořádku vychovávat děti podle vlastního přesvědčení (např. náboženská víra, veganství, konzervativní nebo progresivní hodnoty)?" },
-    { "id": "parenting_13", "text": "Jak byste reagovali, kdyby vaše dítě bylo queer nebo trans?" }
-  ],
-  "lifestyle": [
-    { "id": "lifestyle_1", "text": "Co pro vás znamená „být bohatý“?" },
-    { "id": "lifestyle_2", "text": "Jak si představujete život za 5, 10 nebo 20 let?" },
-    { "id": "lifestyle_3", "text": "Máte nějakou víru, filozofii nebo přesvědčení, které vás ovlivňují?" },
-    { "id": "lifestyle_4", "text": "Věříte na horoskopy, numerologii nebo tarot?" },
-    { "id": "lifestyle_5", "text": "Je pro vás důležité slavit narozeniny, Vánoce nebo Velikonoce?" },
-    { "id": "lifestyle_6", "text": "Myslíte si, že humor by měl mít nějaké hranice?" },
-    { "id": "lifestyle_7", "text": "Záleží vám na tom, aby partner sdílel váš humor, hudební vkus nebo oblíbené filmy?" },
-    { "id": "lifestyle_8", "text": "Koukáte raději na filmy a seriály s dabingem, nebo s titulky?" },
-    { "id": "lifestyle_9", "text": "Jaký máte denní screentime?" },
-    { "id": "lifestyle_10", "text": "Cestujete rádi? Jak by vypadala vaše ideální dovolená?" },
-    { "id": "lifestyle_11", "text": "Jak často pijete alkohol?" }
-  ],
-  "pets": [
-    { "id": "pets_1", "text": "Máte mazlíčky? Chcete v budoucnu (další) mazlíčky? Jaké?" },
-    { "id": "pets_7", "text": "Dáváte přednost adopci mazlíčka z útulku, nebo raději koupit od chovatele? Proč?" },
-    { "id": "pets_3", "text": "Jaký vztah máte ke zvířatům?" },
-    { "id": "pets_2", "text": "Jak by podle vás mělo vypadat rozdělení péče o domácí mazlíčky mezi partnery?" },
-    { "id": "pets_4", "text": "Jak byste řešili péči o mazlíčky během dovolené?" },
-    { "id": "pets_6", "text": "Jaký je váš názor na kastraci/sterilizaci mazlíčků?" },
-    { "id": "pets_5", "text": "Jaký je váš názor na fyzické tresty u mazlíčků (plácnutí, škubání vodítkem)?" }
-  ],
-  "relationship": [
-    {"id": "relationship_1", "text": "Jak důležité je pro vás mít vlastní život mimo vztah (přátelé, koníčky, čas pro sebe)?"},
-    {"id": "relationship_2", "text": "Jaký máte názor na přátelství s lidmi opačného pohlaví?"},
-    {"id": "relationship_3", "text": "Je pro vás důležité, aby partner byl zároveň váš nejlepší přítel?"},
-    {"id": "relationship_4", "text": "Jaký názor máte na žárlivost – důkaz lásky, nebo nedůvěry?"},
-    {"id": "relationship_5", "text": "Vadilo by vám, kdyby váš partner zůstával v kontaktu s ex?"},
-    {"id": "relationship_6", "text": "Je podle vás v pořádku vídat se s jinými lidmi během randění, dokud vztah není „oficiální“?"},
-    {"id": "relationship_7", "text": "Co pro vás znamená nevěra?"},
-    {"id": "relationship_8", "text": "Jaký máte názor na sdílení hesel nebo polohy – důkaz důvěry, nebo zásah do soukromí?"},
-    {"id": "relationship_9", "text": "Kde je pro vás hranice mezi upřímností a zraňující kritikou?"},
-    {"id": "relationship_10", "text": "Dokážete se omluvit, když víte, že jste udělali chybu?"},
-    {"id": "relationship_11", "text": "Jak zvládáte stres a těžká období?"},
-    {"id": "relationship_12", "text": "Měli by partneři stát při sobě, i když jeden udělá něco špatného?"},
-    {"id": "relationship_13", "text": "Chodili jste někdy na terapii? Přemýšleli jste o ní?"},
-    {"id": "relationship_14", "text": "Jaké máte vztahy se svou rodinou? Je pro vás důležité se s ní pravidelně vídat?"},
-    {"id": "relationship_15", "text": "Kdy je ten správný čas se k sobě nastěhovat?"}
-  ]
-}
+[
+  {
+    "id": "household",
+    "name": "Domácnost",
+    "questions": [
+      { "id": "household_1", "text": "Jak by podle vás mělo vypadat rozdělení starosti o domácnost mezi partnery?" },
+      { "id": "household_2", "text": "Mělo by se rozdělení povinností v domácnosti měnit podle období (děti, nemoc, práce)?" },
+      { "id": "household_4", "text": "Kdo by se v domácnosti měl starat o to, co je potřeba koupit?" },
+      { "id": "household_3", "text": "Připravujete si obědy doma, nebo je kupujete hotové?" },
+      { "id": "household_6", "text": "Jak byste řešili rozdílné představy o uklizené domácnosti mezi partnery?" },
+      { "id": "household_8", "text": "Jak často by se podle vás měla domácnost uklízet?" },
+      { "id": "household_7", "text": "Máte nějaké pravidla ohledně návštěv?" },
+      { "id": "household_5", "text": "Bydleli jste někdy sami?" }
+    ]
+  },
+  {
+    "id": "finance",
+    "name": "Finance",
+    "questions": [
+      { "id": "finance_1", "text": "Jaký máte vztah k penězům? Šetříte, nebo utrácíte?" },
+      { "id": "finance_2", "text": "Za co nejčastěji utrácíte?" },
+      { "id": "finance_3", "text": "Investujete (např. do akcií, kryptoměn nebo nemovitostí)?" },
+      { "id": "finance_4", "text": "Máte nějaké dluhy? Stresují vás, nebo je berete jako běžnou součást života?" },
+      { "id": "finance_5", "text": "Půjčili byste peníze svým blízkým? Za jakých podmínek?" },
+      { "id": "finance_6", "text": "Jak si představujete rozdělení výdajů ve vztahu?" },
+      { "id": "finance_7", "text": "Jak byste řešili rozdílné příjmy ve vztahu (např. při dovolené nebo společných nákupech)?" },
+      { "id": "finance_8", "text": "Co si myslíte o společném bankovním účtu?" },
+      { "id": "finance_9", "text": "Je pro vás důležitá finanční nezávislost na partnerovi?" },
+      { "id": "finance_10", "text": "Sledujete pravidelně své výdaje?" },
+      { "id": "finance_11", "text": "Jak důležitá je pro vás finanční transparentnost ve vztahu?" },
+      { "id": "finance_12", "text": "Jak se stavíte k pomoci druhým?" },
+      { "id": "finance_13", "text": "Jak byste se cítili, kdybyste museli partnera živit, nebo naopak?" },
+      { "id": "finance_14", "text": "Kdo by podle vás měl řešit daně, investice, větší nákupy? Sdílená zodpovědnost, nebo jeden z vás?" }
+    ]
+  },
+  {
+    "id": "general-knowledge",
+    "name": "Všeobecný přehled",
+    "questions": [
+      { "id": "general-knowledge_1", "text": "Zajímá vás dění ve světě?" },
+      { "id": "general-knowledge_2", "text": "Kolik podle vás existuje pohlaví?" },
+      { "id": "general-knowledge_3", "text": "Co si myslíte o feminismu? Identifikujete se s ním?" },
+      { "id": "general-knowledge_4", "text": "Měli by stejnopohlavní páry mít možnost uzavřít manželství?" },
+      { "id": "general-knowledge_5", "text": "Může být člověk, který prošel tranzicí, šťastnější?" },
+      { "id": "general-knowledge_6", "text": "Měly by pojišťovny proplácet tranzici?" },
+      { "id": "general-knowledge_7", "text": "Je deprese jen „špatná nálada“?" },
+      { "id": "general-knowledge_8", "text": "Dokázali byste být s někým, kdo má opačný názor na očkování, migraci nebo klima?" },
+      { "id": "general-knowledge_9", "text": "Koho volíte a proč (nebo co je pro vás při volbách důležité)?" },
+      { "id": "general-knowledge_10", "text": "Může si někdy oběť za znásilnění sama?" }
+    ]
+  },
+  {
+    "id": "intimity",
+    "name": "Intimita",
+    "questions": [
+      { "id": "intimity_1", "text": "Jak si představujete ideální sexuální život? (atmosféra, frekvence, iniciace, role…)" },
+      { "id": "intimity_2", "text": "Umíte svému partnerovi říct, co se vám v sexu líbí a co ne?" },
+      { "id": "intimity_3", "text": "Co je pro vás v sexu nepřijatelné?" },
+      { "id": "intimity_4", "text": "Co v sexu naopak potřebujete, abyste byli spokojení?" },
+      { "id": "intimity_5", "text": "Myslíte si, že sex ve vztahu by měl být povinností, i když partner nemá chuť?" },
+      { "id": "intimity_6", "text": "Vadí vám, když partner sleduje porno?" },
+      { "id": "intimity_7", "text": "Umíte si představit otevřený nebo polyamorní vztah? Jaký na to máte názor?" },
+      { "id": "intimity_8", "text": "Jaké jsou vaše sexuální fantazie nebo touhy? Je pro vás snadné o nich mluvit?" }
+    ]
+  },
+  {
+    "id": "parenting",
+    "name": "Rodičovství",
+    "questions": [
+      { "id": "parenting_1", "text": "Chcete v budoucnu děti?" },
+      { "id": "parenting_2", "text": "Co vás na představě rodičovství láká a co vás naopak děsí?" },
+      { "id": "parenting_3", "text": "Kolik dětí byste si přáli mít?" },
+      { "id": "parenting_4", "text": "Kdy je podle vás ten správný čas na dítě?" },
+      { "id": "parenting_5", "text": "Umíte si představit, že byste pečovali o dítě s postižením?" },
+      { "id": "parenting_6", "text": "Pokud by váš partner nemohl mít děti, zvažovali byste adopci, umělé oplodnění nebo jiné alternativy?" },
+      { "id": "parenting_7", "text": "Jak by podle vás mělo vypadat rozdělení péče o děti mezi rodiči?" },
+      { "id": "parenting_8", "text": "Myslíte si, že by se partneři měli střídat na rodičovské dovolené?" },
+      { "id": "parenting_9", "text": "Co byste chtěli svým dětem předat?" },
+      { "id": "parenting_10", "text": "Jak vás ovlivnilo vlastní dětství v tom, jak chcete nebo nechcete vychovávat své děti?" },
+      { "id": "parenting_11", "text": "Jaký je váš názor na fyzické tresty u dětí?" },
+      { "id": "parenting_12", "text": "Je podle vás v pořádku vychovávat děti podle vlastního přesvědčení (např. náboženská víra, veganství, konzervativní nebo progresivní hodnoty)?" },
+      { "id": "parenting_13", "text": "Jak byste reagovali, kdyby vaše dítě bylo queer nebo trans?" }
+    ]
+  },
+  {
+    "id": "lifestyle",
+    "name": "Styl života",
+    "questions": [
+      { "id": "lifestyle_1", "text": "Co pro vás znamená „být bohatý“?" },
+      { "id": "lifestyle_2", "text": "Jak si představujete život za 5, 10 nebo 20 let?" },
+      { "id": "lifestyle_3", "text": "Máte nějakou víru, filozofii nebo přesvědčení, které vás ovlivňují?" },
+      { "id": "lifestyle_4", "text": "Věříte na horoskopy, numerologii nebo tarot?" },
+      { "id": "lifestyle_5", "text": "Je pro vás důležité slavit narozeniny, Vánoce nebo Velikonoce?" },
+      { "id": "lifestyle_6", "text": "Myslíte si, že humor by měl mít nějaké hranice?" },
+      { "id": "lifestyle_7", "text": "Záleží vám na tom, aby partner sdílel váš humor, hudební vkus nebo oblíbené filmy?" },
+      { "id": "lifestyle_8", "text": "Koukáte raději na filmy a seriály s dabingem, nebo s titulky?" },
+      { "id": "lifestyle_9", "text": "Jaký máte denní screentime a kolik by pro vás už bylo moc?" },
+      { "id": "lifestyle_10", "text": "Cestujete rádi? Jak by vypadala vaše ideální dovolená?" },
+      { "id": "lifestyle_11", "text": "Jak často pijete alkohol?" }
+    ]
+  },
+  {
+    "id": "relationship",
+    "name": "Vztah",
+    "questions": [
+      {"id": "relationship_1", "text": "Jak důležité je pro vás mít vlastní život mimo vztah (přátelé, koníčky, čas pro sebe)?"},
+      {"id": "relationship_2", "text": "Jaký máte názor na přátelství s lidmi opačného pohlaví?"},
+      {"id": "relationship_3", "text": "Je pro vás důležité, aby partner byl zároveň váš nejlepší přítel?"},
+      {"id": "relationship_4", "text": "Jaký názor máte na žárlivost – důkaz lásky, nebo nedůvěry?"},
+      {"id": "relationship_5", "text": "Vadilo by vám, kdyby váš partner zůstával v kontaktu s ex?"},
+      {"id": "relationship_6", "text": "Je podle vás v pořádku vídat se s jinými lidmi během randění, dokud vztah není „oficiální“?"},
+      {"id": "relationship_7", "text": "Co pro vás znamená nevěra?"},
+      {"id": "relationship_8", "text": "Jaký máte názor na sdílení hesel nebo polohy – důkaz důvěry, nebo zásah do soukromí?"},
+      {"id": "relationship_9", "text": "Kde je pro vás hranice mezi upřímností a zraňující kritikou?"},
+      {"id": "relationship_10", "text": "Dokážete se omluvit, když víte, že jste udělali chybu?"},
+      {"id": "relationship_11", "text": "Jak zvládáte stres a těžká období?"},
+      {"id": "relationship_12", "text": "Měli by partneři stát při sobě, i když jeden udělá něco špatného?"},
+      {"id": "relationship_13", "text": "Chodili jste někdy na terapii? Přemýšleli jste o ní?"},
+      {"id": "relationship_14", "text": "Jaké máte vztahy se svou rodinou? Je pro vás důležité se s ní pravidelně vídat?"},
+      {"id": "relationship_15", "text": "Kdy je ten správný čas se k sobě nastěhovat?"}
+    ]
+  },
+  {
+    "id": "pets",
+    "name": "Mazlíčci",
+    "questions": [
+      { "id": "pets_1", "text": "Máte mazlíčky? Chcete v budoucnu (další) mazlíčky? Jaké?" },
+      { "id": "pets_7", "text": "Dáváte přednost adopci mazlíčka z útulku, nebo raději koupit od chovatele? Proč?" },
+      { "id": "pets_3", "text": "Jaký vztah máte ke zvířatům?" },
+      { "id": "pets_2", "text": "Jak by podle vás mělo vypadat rozdělení péče o domácí mazlíčky mezi partnery?" },
+      { "id": "pets_4", "text": "Jak byste řešili péči o mazlíčky během dovolené?" },
+      { "id": "pets_6", "text": "Jaký je váš názor na kastraci/sterilizaci mazlíčků?" },
+      { "id": "pets_5", "text": "Jaký je váš názor na fyzické tresty u mazlíčků (plácnutí, škubání vodítkem)?" }
+    ]
+  }
+]
