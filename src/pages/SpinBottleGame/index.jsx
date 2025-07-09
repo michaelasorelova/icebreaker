@@ -3,6 +3,8 @@ import wineBottle from "./img/wine-bottle.svg";
 import { useState, useEffect } from "react";
 import { SpinBottleButtons } from "../../components/SpinBottleButtons";
 import { SpinBottleOverlay } from "../../components/SpinBottleOverlay";
+import { fetchDares, fetchTruths } from "../../utils/fetchDaresTruths";
+import { spinBottle } from "../../utils/spinBottle";
 
 export const SpinBottleGame = () => {
   const [rotation, setRotation] = useState(0);
@@ -12,39 +14,30 @@ export const SpinBottleGame = () => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [hasSpun, setHasSpun] = useState(false);
   const [hasChosen, setHasChosen] = useState(false);
+  const [mode, setMode] = useState(null);
+  const [spinDisabled, setSpinDisabled] = useState(false);
 
   useEffect(() => {
-    const loadDares = async () => {
-      try {
-        const res = await fetch('/api/dares.json');
-        const data = await res.json();
-        setDares(data);
-      } catch (err) {
-        console.error("Chyba při načítání úkolů:", err);
-      }
-    };
-    loadDares();
-  }, []);
-
-  useEffect(() => {
-    const loadTruths = async () => {
-      try {
-        const res = await fetch('/api/truths.json');
-        const data = await res.json();
-        setTruths(data);
-      } catch (err) {
-        console.error("Chyba při načítání pravd:", err);
-      }
-    };
-    loadTruths();
-  }, []);
+    if (mode === 'withQuestions') {
+      fetchDares(setDares);
+      fetchTruths(setTruths);
+    }
+  }, [mode]);
 
   const handleSpin = () => {
-    const targetAngle = Math.random() < 0.5 ? 0 : 180;
-    const spinAmount = 5 * 360 + targetAngle;
+    if (spinDisabled) return;
+    const spinAmount = spinBottle();
     setRotation((prev) => prev + spinAmount);
     setHasSpun(true);
     setHasChosen(false);
+
+    if (mode === 'justSpin') {
+      setSpinDisabled(true);
+      setTimeout(() => {
+        setSpinDisabled(false);
+        setHasSpun(false);
+      }, 3000);
+    }
   };
 
   const handleDareClick = () => {
@@ -59,7 +52,7 @@ export const SpinBottleGame = () => {
   const handleTruthClick = () => {
     const text = truths.length
       ? truths[Math.floor(Math.random() * truths.length)]
-      : 'Otázky pravdy nebyly načteny.';
+      : 'Pravdy nebyly načteny.';
     setCurrentText({ type: 'Pravda', text });
     setShowOverlay(true);
     setHasChosen(true);
@@ -71,35 +64,57 @@ export const SpinBottleGame = () => {
     setHasChosen(false);
   };
 
+  if (mode === null) {
+    return (
+      <div className="container">
+        <section className="spin-bottle spin-bottle__step--1">
+          <h2>Pravda nebo úkol</h2>
+          <div className="spin-bottle__content">
+            <div className="spin-bottle__text">
+              <p>Nemáte po ruce flašku? Nevadí! Icebreaker točí za vás.</p>
+              <p>Vyberte si, jestli chcete použít naše pravdy a úkoly, nebo si vymyslet vlastní.</p>
+            </div>
+            <div className="spin-bottle__buttons">
+              <button className='btn' onClick={() => setMode('withQuestions')}>
+                Připravené pravdy a úkoly
+              </button>
+              <button className='btn' onClick={() => setMode('justSpin')}>
+                Vlastní pravdy a úkoly
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div className="container">
-
-      <section className="spin-bottle">
-        <SpinBottleButtons
-          hasSpun={hasSpun}
-          hasChosen={hasChosen}
-          onTruthClick={handleTruthClick}
-          onDareClick={handleDareClick}
-        />
-
+      <section className="spin-bottle spin-bottle__step--2">
+        {mode === 'withQuestions' && (
+          <SpinBottleButtons
+            hasSpun={hasSpun}
+            hasChosen={hasChosen}
+            onTruthClick={handleTruthClick}
+            onDareClick={handleDareClick}
+          />
+        )}
         <img
           className="spin-bottle__image"
           src={wineBottle}
           alt="Flaška"
-          style={{ transform: `rotate(${rotation}deg)` }}
-          onClick={!hasSpun ? handleSpin : undefined}
+          style={{ transform: `rotate(${rotation}deg)`, transition: 'transform 3s ease-out' }}
+          onClick={!hasSpun && !spinDisabled ? handleSpin : undefined}
         />
-
         <div className="spin-bottle__button">
           <button
-            className={`btn btn--full ${(hasSpun && !hasChosen) ? 'disabled' : ''}`}
+            className={`btn btn--full ${((hasSpun && mode === 'withQuestions' && !hasChosen) || spinDisabled) ? 'disabled' : ''}`}
             onClick={handleSpin}
-            disabled={hasSpun && !hasChosen}
+            disabled={(hasSpun && mode === 'withQuestions' && !hasChosen) || spinDisabled}
           >
             Roztočte flašku
           </button>
         </div>
-        
       </section>
 
       {showOverlay && (
