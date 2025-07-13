@@ -21,8 +21,7 @@ export const SpinBottleGame = () => {
   useEffect(() => {
     if (mode === 'preset') {
       const loadData = async () => {
-        const daresData = await fetchDares();
-        const truthsData = await fetchTruths();
+        const [daresData, truthsData] = await Promise.all([fetchDares(), fetchTruths()]);
         setDares(daresData);
         setTruths(truthsData);
       };
@@ -51,16 +50,16 @@ export const SpinBottleGame = () => {
     }
   };
 
-  const handleDareClick = () => {
-    const text = getRandomItem(dares, 'Úkoly nebyly načteny.');
-    setCurrentText({ type: 'Úkol', text });
+  const handleTruthClick = () => {
+    const text = getRandomItem(truths, 'Pravdy nebyly načteny.');
+    setCurrentText({ type: 'Pravda', text });
     setShowOverlay(true);
     setHasChosen(true);
   };
 
-  const handleTruthClick = () => {
-    const text = getRandomItem(truths, 'Pravdy nebyly načteny.');
-    setCurrentText({ type: 'Pravda', text });
+  const handleDareClick = () => {
+    const text = getRandomItem(dares, 'Úkoly nebyly načteny.');
+    setCurrentText({ type: 'Úkol', text });
     setShowOverlay(true);
     setHasChosen(true);
   };
@@ -71,7 +70,7 @@ export const SpinBottleGame = () => {
     setHasChosen(false);
   };
 
-  if (mode === null) {
+  if (!mode) {
     return (
       <div className="container">
         <section className="spin-bottle spin-bottle__step--1">
@@ -82,12 +81,8 @@ export const SpinBottleGame = () => {
               <p>Vyberte si, jestli chcete použít naše pravdy a úkoly, nebo si vymyslet vlastní.</p>
             </div>
             <div className="spin-bottle__buttons">
-              <button className="btn" onClick={() => setMode('preset')}>
-                Připravené pravdy a úkoly
-              </button>
-              <button className="btn" onClick={() => setMode('custom')}>
-                Vlastní pravdy a úkoly
-              </button>
+              <button className="btn" onClick={() => setMode('preset')}>Připravené pravdy a úkoly</button>
+              <button className="btn" onClick={() => setMode('custom')}>Vlastní pravdy a úkoly</button>
             </div>
           </div>
         </section>
@@ -98,6 +93,7 @@ export const SpinBottleGame = () => {
   return (
     <div className="container">
       <section className="spin-bottle spin-bottle__step--2">
+        <h2>Pravda nebo úkol</h2>
         <div className="spin-bottle__content">
           {mode === 'preset' && (
             <SpinBottleButtons

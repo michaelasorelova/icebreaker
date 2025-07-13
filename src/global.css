@@ -66,6 +66,12 @@ i {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
+.btn--full {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
 .disabled {
   color: #A9A9A9;
   background-color: #D3D3D3;

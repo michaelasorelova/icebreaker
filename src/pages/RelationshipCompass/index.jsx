@@ -358,7 +358,7 @@ export const RelationshipCompass = () => {
                 )}
 
                 <div className="relationship-compass__actions">
-                  <button className="btn" onClick={handleRestart}>
+                  <button className="btn btn--full" onClick={handleRestart}>
                     Hrát znovu
                   </button>
                 </div>

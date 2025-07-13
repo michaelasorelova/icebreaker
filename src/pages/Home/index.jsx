@@ -58,11 +58,14 @@ export const Home = () => {
             <div className="home__option">
               <p>Mini hry</p>
               <div className="home__buttons">
+                <button className="btn btn--full" onClick={() => navigate('/relationship-compass')}>
+                  Vztahový kompas
+                </button>
                 <button className="btn btn--full" onClick={() => navigate('/spin-bottle-game')}>
                   Pravda nebo úkol
                 </button>
-                <button className="btn btn--full" onClick={() => navigate('/relationship-compass')}>
-                  Vztahový kompas
+                <button className="btn btn--full" onClick={() => navigate('/this-or-that')}>
+                  Tohle nebo tamto
                 </button>
               </div>
             </div>
