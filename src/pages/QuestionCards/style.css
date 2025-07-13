@@ -82,11 +82,3 @@
 .slick-next {
   right: 10px;
 }
-
-@media (min-width: 768px) {
-  .question-cards {
-    width: 60%;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-}

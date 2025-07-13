@@ -53,8 +53,6 @@
 
   .deleted-questions__item,
   .favorite-questions-list__item {
-    width: 60%;
-    max-width: 600px;
     cursor: pointer;
   }
 }

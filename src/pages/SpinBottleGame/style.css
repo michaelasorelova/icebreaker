@@ -57,11 +57,3 @@
 .overlay__text {
   padding: 0 2rem;
 }
-
-@media (min-width: 768px) {
-  .spin-bottle__button, .spin-bottle__buttons {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-}

@@ -79,6 +79,14 @@ i {
   opacity: 1;
 }
 
+@media (min-width: 768px) {
+  .container {
+    width: 60%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
 @media (min-width: 1024px) {
   .btn {
     cursor: pointer;

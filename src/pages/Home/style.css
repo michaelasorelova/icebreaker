@@ -36,11 +36,3 @@
   gap: 0.625rem;
   grid-template-columns: 1fr;
 }
-
-@media (min-width: 768px) {
-  .home__buttons {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-}

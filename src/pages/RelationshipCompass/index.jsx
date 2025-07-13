@@ -22,6 +22,21 @@ export const RelationshipCompass = () => {
     fetchQuestions();
   }, []);
 
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      if (step === 2 && (mode || selectedCategories.length > 0 || Object.keys(answers).length > 0)) {
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [step, mode, selectedCategories, answers]);
+
   const toggleCategory = (id) => {
     setSelectedCategories((prev) =>
       prev.includes(id) ? prev.filter((c) => c !== id) : [...prev, id]
@@ -118,9 +133,11 @@ export const RelationshipCompass = () => {
                 Když hrajete sami, berte to jako příležitost zamyslet se nad tím, co od vztahu chcete a co je pro vás důležité.
               </p>
             </div>
-            <button className="btn" onClick={() => setStep(2)}>
-              Hra
-            </button>
+            <div className="relationship-compass__button">
+              <button className="btn btn--full" onClick={() => setStep(2)}>
+                Hra
+              </button>
+            </div>
           </div>
         )}
 
@@ -233,7 +250,7 @@ export const RelationshipCompass = () => {
 
             <button
               type="button"
-              className="btn"
+              className="btn btn--full"
               disabled={!mode || selectedCategories.length === 0 || !allAnswered}
               onClick={handleFinish}
             >
