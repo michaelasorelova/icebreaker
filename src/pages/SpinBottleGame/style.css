@@ -4,6 +4,12 @@
   gap: 1.5rem;
 }
 
+.spin-bottle__buttons {
+  display: grid;
+  gap: 0.625rem;
+  grid-template-columns: 1fr 1fr;
+}
+
 .spin-bottle__step--1 .spin-bottle__text p:nth-of-type(1) {
   padding-bottom: 1rem;
 }
@@ -14,34 +20,17 @@
   grid-template-columns: 1fr;
 }
 
-.spin-bottle__step--2 {
+.spin-bottle__step--2 .spin-bottle__content {
   display: flex;
   flex-direction: column;
   gap: 4rem;
 }
 
-.spin-bottle__image {
+.spin-bottle__step--2 .spin-bottle__image {
   max-width: 120px;
   margin: 0 auto;
   transition: transform 2s ease-out;
   transform-origin: center center;
-}
-
-.spin-bottle__buttons {
-  display: grid;
-  gap: 0.625rem;
-  grid-template-columns: 1fr 1fr;
-}
-
-.home__option:nth-child(1) .home__buttons {
-  display: grid;
-  gap: 0.625rem;
-  grid-template-columns: 1fr;
-}
-
-.spin-bottle__button {
-  display: grid;
-  grid-template-columns: 1fr;
 }
 
 .overlay {
@@ -49,10 +38,10 @@
   align-items: center;
   justify-content: center;
   position: fixed;
-  z-index: 20;
   top: 0;
   right: 0;
   left: 0;
+  z-index: 20;
   height: 100vh;
   width: 100%;
   background-color: #000;
@@ -61,14 +50,6 @@
 
 .overlay__text {
   padding: 0 2rem;
-}
-
-.disabled {
-  background-color: #D3D3D3;
-  color: #A9A9A9;
-  opacity: 1;
-  pointer-events: none;
-  cursor: not-allowed;
 }
 
 @media (min-width: 768px) {
