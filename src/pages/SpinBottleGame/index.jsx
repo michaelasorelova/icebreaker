@@ -112,13 +112,15 @@ export const SpinBottleGame = () => {
             onClick={!hasSpun && !spinDisabled ? handleSpin : undefined}
           />
 
-          <button
-            className={`btn ${((hasSpun && mode === 'preset' && !hasChosen) || spinDisabled) ? 'disabled' : ''}`}
-            onClick={handleSpin}
-            disabled={(hasSpun && mode === 'preset' && !hasChosen) || spinDisabled}
-          >
-            Roztočte flašku
-          </button>
+          <div className='spin-bottle__button'>
+            <button
+              className={`btn btn--full ${((hasSpun && mode === 'preset' && !hasChosen) || spinDisabled) ? 'disabled' : ''}`}
+              onClick={handleSpin}
+              disabled={(hasSpun && mode === 'preset' && !hasChosen) || spinDisabled}
+            >
+              Roztočte flašku
+            </button>
+          </div>
         </div>
       </section>
 
