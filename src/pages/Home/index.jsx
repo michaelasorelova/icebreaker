@@ -62,10 +62,10 @@ export const Home = () => {
                   Vztahový kompas
                 </button>
                 <button className="btn btn--full" onClick={() => navigate('/spin-bottle-game')}>
-                  Pravda nebo úkol
+                  Pravda, nebo úkol
                 </button>
                 <button className="btn btn--full" onClick={() => navigate('/this-or-that')}>
-                  Tohle nebo tamto
+                  Tohle, nebo tamto
                 </button>
               </div>
             </div>

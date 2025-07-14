@@ -119,7 +119,7 @@ export const QuestionCards = () => {
           <p className="question-cards__empty">{questions[0].text}</p>
         ) : (
           <>
-            <div className="question-cards__track">
+            <div className="slider">
               <QuestionSlider questions={questions} onSlideChange={setCurrentIndex} />
             </div>
 

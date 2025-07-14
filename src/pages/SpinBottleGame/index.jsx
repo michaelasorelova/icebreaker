@@ -74,7 +74,7 @@ export const SpinBottleGame = () => {
     return (
       <div className="container">
         <section className="spin-bottle spin-bottle__step--1">
-          <h2>Pravda nebo úkol</h2>
+          <h2>Pravda, nebo úkol</h2>
           <div className="spin-bottle__content">
             <div className="spin-bottle__text">
               <p>Nemáte po ruce flašku? Nevadí! Icebreaker točí za vás.</p>
@@ -93,7 +93,7 @@ export const SpinBottleGame = () => {
   return (
     <div className="container">
       <section className="spin-bottle spin-bottle__step--2">
-        <h2>Pravda nebo úkol</h2>
+        <h2>Pravda, nebo úkol</h2>
         <div className="spin-bottle__content">
           {mode === 'preset' && (
             <SpinBottleButtons

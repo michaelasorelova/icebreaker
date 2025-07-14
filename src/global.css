@@ -79,6 +79,13 @@ i {
   opacity: 1;
 }
 
+.slider {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(-1 * ((100vw - 100%) / 2));
+  margin-right: calc(-1 * ((100vw - 100%) / 2));
+}
+
 @media (min-width: 768px) {
   .container {
     width: 60%;
@@ -98,5 +105,12 @@ i {
 
   .lbl {
     cursor: pointer;
+  }
+
+  .slider {
+    width: auto;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
   }
 }

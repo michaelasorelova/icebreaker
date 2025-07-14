@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { QuestionCard } from '../QuestionCard';
 
@@ -22,6 +23,17 @@ const PrevArrow = ({ onClick }) => (
 );
 
 export function QuestionSlider({ questions, onSlideChange }) {
+  const [showArrows, setShowArrows] = useState(window.innerWidth >= 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShowArrows(window.innerWidth >= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const settings = {
     centerMode: true,
     infinite: false,
@@ -29,8 +41,9 @@ export function QuestionSlider({ questions, onSlideChange }) {
     slidesToShow: 1,
     swipeToSlide: true,
     speed: 500,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    arrows: showArrows,
+    nextArrow: showArrows ? <NextArrow /> : null,
+    prevArrow: showArrows ? <PrevArrow /> : null,
     beforeChange: (_, newIndex) => {
       if (onSlideChange) onSlideChange(newIndex);
     },
